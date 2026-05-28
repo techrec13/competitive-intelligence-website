@@ -9,168 +9,196 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --red: #E1242A;
-  --red-dark: #B51C20;
-  --red-pale: #FDF2F2;
-  --red-light: #FADADA;
-  --red-mid: #F08888;
-  --bg: #F4F3F0;
-  --surface: #FFFFFF;
-  --dark: #18181A;
-  --dark2: #2C2C30;
-  --tp: #18181A;
-  --ts: #4D4B4B;
-  --tm: #8C8A8A;
-  --border: #E5E2DC;
-  --border2: #D0CCC4;
-  --tag-ma: #FFF3E0; --tag-ma-t: #7C4E00;
-  --tag-wf: #E8F5E9; --tag-wf-t: #1B5E20;
-  --tag-rd: #E3F2FD; --tag-rd-t: #0D3B6E;
-  --tag-ai: #F3E5F5; --tag-ai-t: #4A148C;
-  --tag-reg: #FCE4EC; --tag-reg-t: #880E4F;
-  --tag-ci: #E0F7FA; --tag-ci-t: #004D52;
+  --red:#E1242A; --red-dark:#B51C20; --red-pale:#FDF2F2; --red-light:#FADADA;
+  --bg:#F4F3F0; --surface:#FFFFFF; --dark:#18181A; --dark2:#2C2C30;
+  --tp:#18181A; --ts:#4D4B4B; --tm:#8C8A8A; --border:#E5E2DC; --border2:#D0CCC4;
+  --tag-ma:#FFF3E0; --tag-ma-t:#7C4E00; --tag-wf:#E8F5E9; --tag-wf-t:#1B5E20;
+  --tag-rd:#E3F2FD; --tag-rd-t:#0D3B6E; --tag-ai:#F3E5F5; --tag-ai-t:#4A148C;
+  --tag-reg:#FCE4EC; --tag-reg-t:#880E4F; --tag-ci:#E0F7FA; --tag-ci-t:#004D52;
+  --amber:#D97706; --amber-bg:#FFFBEB; --green:#059669; --green-bg:#ECFDF5;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tp);line-height:1.6;min-height:100vh}
 
 /* HEADER */
-header{background:var(--dark);color:white;padding:0}
-.header-top{padding:1.8rem 2rem 1.5rem;max-width:1200px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:14px}
-.brand-mark{width:36px;height:36px;background:var(--red);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.brand-mark svg{width:20px;height:20px;fill:white}
-.brand-text h1{font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;color:white;letter-spacing:-0.01em}
-.brand-text p{font-size:12px;color:rgba(255,255,255,0.45);font-weight:300;margin-top:1px}
-.header-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.date-pill{font-size:12px;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:5px 12px;border-radius:20px}
-.refresh-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;padding:6px 14px;background:var(--red);color:white;border:none;border-radius:6px;cursor:pointer;transition:background 0.15s;letter-spacing:0.01em}
+header{background:var(--dark)}
+.header-top{padding:1.5rem 2rem 1.35rem;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:13px}
+.brand-mark{width:33px;height:33px;background:var(--red);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.brand-mark svg{width:18px;height:18px;fill:white}
+.brand-text h1{font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;color:white;letter-spacing:-.01em}
+.brand-text p{font-size:11px;color:rgba(255,255,255,.38);font-weight:300;margin-top:1px}
+.header-right{display:flex;align-items:center;gap:9px}
+.date-pill{font-size:11px;color:rgba(255,255,255,.42);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:4px 11px;border-radius:20px}
+.refresh-btn{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:500;padding:5px 13px;background:var(--red);color:white;border:none;border-radius:6px;cursor:pointer;transition:background .15s}
 .refresh-btn:hover{background:var(--red-dark)}
 
 /* PAGE TABS */
-.page-tabs{background:var(--dark2);border-bottom:1px solid rgba(255,255,255,0.06)}
+.page-tabs{background:var(--dark2);border-bottom:1px solid rgba(255,255,255,.05)}
 .page-tabs-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex}
-.page-tab{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:0.9rem 1.2rem;color:rgba(255,255,255,0.4);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;letter-spacing:0.01em}
-.page-tab:hover{color:rgba(255,255,255,0.75)}
+.page-tab{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;padding:.85rem 1.15rem;color:rgba(255,255,255,.35);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;letter-spacing:.01em}
+.page-tab:hover{color:rgba(255,255,255,.7)}
 .page-tab.active{color:white;border-bottom-color:var(--red)}
 
-/* SEARCH BAR */
+/* SEARCH */
 .search-wrap{background:white;border-bottom:1px solid var(--border)}
-.search-inner{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;gap:12px;align-items:center}
+.search-inner{max-width:1200px;margin:0 auto;padding:.85rem 2rem;display:flex;gap:11px;align-items:center}
 .search-box{flex:1;position:relative}
-.search-box input{width:100%;padding:9px 14px 9px 38px;border:1.5px solid var(--border2);border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;color:var(--tp);background:var(--bg);outline:none;transition:border 0.15s}
+.search-box input{width:100%;padding:8px 14px 8px 35px;border:1.5px solid var(--border2);border-radius:8px;font-family:'Inter',sans-serif;font-size:13.5px;color:var(--tp);background:var(--bg);outline:none;transition:border .15s}
 .search-box input:focus{border-color:var(--red);background:white}
-.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--tm);pointer-events:none}
+.search-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--tm);pointer-events:none}
 .search-box input::placeholder{color:var(--tm)}
-.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--tm);font-size:16px;display:none;line-height:1}
-.result-count{font-size:12px;color:var(--tm);white-space:nowrap}
+.search-clear{position:absolute;right:9px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--tm);font-size:16px;display:none;line-height:1}
+.result-count{font-size:11.5px;color:var(--tm);white-space:nowrap}
 
-/* CATEGORY NAV */
+/* CAT NAV */
 .cat-nav{background:var(--surface);border-bottom:1px solid var(--border)}
 .cat-nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;overflow-x:auto;scrollbar-width:none}
 .cat-nav-inner::-webkit-scrollbar{display:none}
-.cat-tab{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;padding:.85rem 1rem;color:var(--tm);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.cat-tab{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;padding:.75rem .95rem;color:var(--tm);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:5px}
 .cat-tab:hover{color:var(--tp)}
 .cat-tab.active{color:var(--red);border-bottom-color:var(--red)}
-.cat-tab .cnt{font-size:10.5px;background:var(--red-pale);color:var(--red);padding:1px 6px;border-radius:10px;font-weight:600}
+.cat-tab .cnt{font-size:10px;background:var(--red-pale);color:var(--red);padding:1px 6px;border-radius:10px;font-weight:600}
 .cat-tab.active .cnt{background:var(--red);color:white}
 
 /* MAIN */
-main{max-width:1200px;margin:0 auto;padding:1.5rem 2rem}
-.status-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;font-size:12px;color:var(--tm)}
-.loading-state,.empty-state{text-align:center;padding:4rem 2rem;color:var(--tm)}
-.error-state{text-align:center;padding:2.5rem 2rem;color:#900;background:#fff5f5;border-radius:10px;font-size:14px;border:1px solid #fdd}
-.spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.75s linear infinite;margin:0 auto 1rem}
+main{max-width:1200px;margin:0 auto;padding:1.4rem 2rem}
+.status-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;font-size:11.5px;color:var(--tm)}
+.loading-state,.empty-state{text-align:center;padding:3.5rem 2rem;color:var(--tm)}
+.empty-state p{font-size:13.5px}
+.error-state{padding:1rem 1.3rem;color:#900;background:#fff5f5;border-radius:8px;font-size:12.5px;border:1px solid #fcc;margin-bottom:1rem}
+.spinner{width:26px;height:26px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 1rem}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ARTICLES */
-.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1rem}
-.article-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;transition:box-shadow 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:.55rem}
-.article-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);border-color:var(--border2)}
+/* ARTICLE CARDS */
+.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(316px,1fr));gap:.9rem}
+.article-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.1rem;transition:box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:.5rem}
+.article-card:hover{box-shadow:0 3px 16px rgba(0,0,0,.07);border-color:var(--border2)}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.cat-tag{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap}
-.tag-ma{background:var(--tag-ma);color:var(--tag-ma-t)}
-.tag-wf{background:var(--tag-wf);color:var(--tag-wf-t)}
-.tag-rd{background:var(--tag-rd);color:var(--tag-rd-t)}
-.tag-ai{background:var(--tag-ai);color:var(--tag-ai-t)}
-.tag-reg{background:var(--tag-reg);color:var(--tag-reg-t)}
-.tag-ci{background:var(--tag-ci);color:var(--tag-ci-t)}
+.cat-tag{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap}
+.tag-ma{background:var(--tag-ma);color:var(--tag-ma-t)} .tag-wf{background:var(--tag-wf);color:var(--tag-wf-t)}
+.tag-rd{background:var(--tag-rd);color:var(--tag-rd-t)} .tag-ai{background:var(--tag-ai);color:var(--tag-ai-t)}
+.tag-reg{background:var(--tag-reg);color:var(--tag-reg-t)} .tag-ci{background:var(--tag-ci);color:var(--tag-ci-t)}
 .tag-gen{background:#F0EDE8;color:#666}
-.card-time{font-size:11px;color:var(--tm);white-space:nowrap}
-.card-title{font-family:'Sora',sans-serif;font-size:.92rem;font-weight:600;line-height:1.4;color:var(--tp)}
+.card-time{font-size:10.5px;color:var(--tm);white-space:nowrap;flex-shrink:0}
+.card-title{font-family:'Sora',sans-serif;font-size:.875rem;font-weight:600;line-height:1.4;color:var(--tp)}
 .card-title a{color:inherit;text-decoration:none}
 .card-title a:hover{color:var(--red)}
-.card-desc{font-size:12.5px;color:var(--ts);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.55rem;border-top:1px solid var(--border)}
-.src-name{font-size:11.5px;font-weight:500;color:var(--tm);display:flex;align-items:center;gap:5px}
-.src-dot{width:5px;height:5px;border-radius:50%;background:var(--red);opacity:.5}
-.read-link{font-size:11.5px;font-weight:600;color:var(--red);text-decoration:none;letter-spacing:.01em;transition:opacity .15s}
-.read-link:hover{opacity:.75}
+.card-desc{font-size:12px;color:var(--ts);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.45rem;border-top:1px solid var(--border)}
+.src-name{font-size:11px;font-weight:500;color:var(--tm);display:flex;align-items:center;gap:4px}
+.src-dot{width:4px;height:4px;border-radius:50%;background:var(--red);opacity:.4;flex-shrink:0}
+.read-link{font-size:11px;font-weight:600;color:var(--red);text-decoration:none;transition:opacity .15s}
+.read-link:hover{opacity:.7}
 
 /* SECTION HEADERS */
-.sec-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
-.sec-head h2{font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:700;color:var(--tp);white-space:nowrap}
+.sec-head{display:flex;align-items:center;gap:.65rem;margin-bottom:.85rem}
+.sec-head h2{font-family:'Sora',sans-serif;font-size:1rem;font-weight:700;color:var(--tp);white-space:nowrap}
 .sec-line{height:1px;background:var(--border);flex:1}
-.sec-count{font-size:11.5px;color:var(--tm);white-space:nowrap}
-.cat-section{margin-bottom:2.25rem}
+.sec-count{font-size:11px;color:var(--tm);white-space:nowrap}
+.cat-section{margin-bottom:1.85rem}
 
-/* ========== COMPETITOR INTELLIGENCE TAB ========== */
-#ciPage{display:none}
-.ci-header{margin-bottom:1.5rem}
-.ci-header h2{font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;color:var(--tp)}
-.ci-header p{font-size:13px;color:var(--ts);margin-top:3px}
-
-/* HEATMAP */
-.heatmap-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:2rem}
-.heatmap-title{padding:1rem 1.25rem .75rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.heatmap-title h3{font-family:'Sora',sans-serif;font-size:.95rem;font-weight:700;color:var(--tp)}
-.heatmap-legend{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--tm)}
-.legend-scale{display:flex;gap:2px;align-items:center}
-.legend-swatch{width:14px;height:14px;border-radius:2px}
-.heatmap-scroll{overflow-x:auto}
-table.heatmap{width:100%;border-collapse:collapse}
-table.heatmap th{font-size:11px;font-weight:600;color:var(--ts);padding:.6rem .5rem;text-align:center;background:var(--bg);border-bottom:1px solid var(--border);white-space:nowrap;letter-spacing:.02em}
-table.heatmap th.comp-col{text-align:left;padding-left:1.25rem;min-width:160px}
-table.heatmap td{padding:.45rem .5rem;text-align:center;border-bottom:1px solid var(--border);font-size:12px;font-weight:500;cursor:pointer;transition:opacity .15s;position:relative}
-table.heatmap td:hover{opacity:.75}
-table.heatmap td.comp-name{text-align:left;padding-left:1.25rem;font-size:12.5px;font-weight:600;color:var(--tp);cursor:default;background:white!important}
-table.heatmap td.comp-name:hover{opacity:1}
-table.heatmap td.total-col{font-weight:700;background:var(--bg)!important;color:var(--tp);cursor:default}
-table.heatmap td.total-col:hover{opacity:1}
-table.heatmap tr:last-child td{border-bottom:none}
-.cell-0{background:#F8F7F5;color:var(--tm)}
-.cell-1{background:#FDE8E8;color:#9B1C1C}
-.cell-2{background:#FAC5C5;color:#7B1414}
-.cell-3{background:#F58484;color:#fff}
-.cell-4{background:#E1242A;color:#fff}
-
-/* COMPETITOR DETAIL */
-.comp-detail{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.comp-detail-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.comp-detail-header h3{font-family:'Sora',sans-serif;font-size:.95rem;font-weight:700;color:var(--tp)}
-.comp-detail-header span{font-size:12px;color:var(--tm)}
-.comp-detail-body{padding:1.25rem}
-.comp-articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.85rem}
-
-/* OVERALL VOLUME BAR */
-.vol-section{margin-bottom:2rem}
-.vol-section h3{font-family:'Sora',sans-serif;font-size:.95rem;font-weight:700;color:var(--tp);margin-bottom:.85rem}
-.vol-bars{display:flex;flex-direction:column;gap:.45rem}
-.vol-row{display:flex;align-items:center;gap:.75rem}
-.vol-label{font-size:12px;font-weight:600;color:var(--tp);width:140px;flex-shrink:0;text-align:right}
-.vol-bar-wrap{flex:1;background:var(--bg);border-radius:4px;height:22px;overflow:hidden}
-.vol-bar{height:100%;background:var(--red);border-radius:4px;transition:width .5s ease;display:flex;align-items:center;padding:0 8px;min-width:30px}
-.vol-bar span{font-size:11px;font-weight:600;color:white}
-
-/* HIDDEN */
+/* PAGE VISIBILITY */
 .page{display:none}
 .page.active{display:block}
-
-/* MANUFACTURING DASHBOARD */
-#mfgPage{padding:0}
 #mfgPage.active{display:flex;flex-direction:column}
-.mfg-iframe{width:100%;border:none;flex:1;min-height:calc(100vh - 120px)}
+.mfg-iframe{width:100%;border:none;flex:1;min-height:calc(100vh - 112px)}
 
-footer{text-align:center;padding:1.75rem 2rem;font-size:11.5px;color:var(--tm);border-top:1px solid var(--border);margin-top:2rem;background:white}
+/* ═══════════════════════════════════
+   COMPETITOR BRIEF PAGE
+═══════════════════════════════════ */
+.brief-head{padding:1.4rem 0 .9rem;border-bottom:1px solid var(--border);margin-bottom:1.25rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.brief-head h2{font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;color:var(--tp)}
+.brief-head p{font-size:12px;color:var(--tm);margin-top:3px;line-height:1.5;max-width:700px}
+.brief-stamp{font-size:10.5px;background:var(--bg);border:1px solid var(--border);padding:4px 11px;border-radius:20px;color:var(--tm);white-space:nowrap;align-self:flex-start;margin-top:4px}
+
+/* KPI strip */
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;margin-bottom:1.15rem}
+.kpi-card{background:var(--surface);border:1px solid var(--border);border-top:3px solid var(--border2);border-radius:8px;padding:.85rem 1rem}
+.kpi-card.kr{border-top-color:var(--red)} .kpi-card.ka{border-top-color:var(--amber)}
+.kpi-val{font-family:'Sora',sans-serif;font-size:1.55rem;font-weight:700;color:var(--tp);letter-spacing:-.02em;line-height:1}
+.kpi-card.kr .kpi-val{color:var(--red)} .kpi-card.ka .kpi-val{color:var(--amber)}
+.kpi-lbl{font-size:10px;color:var(--tm);text-transform:uppercase;letter-spacing:.05em;margin-top:4px;font-weight:600;line-height:1.35}
+
+/* Watchouts */
+.watchout-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1.6rem}
+.wo{border-radius:8px;padding:.9rem 1rem;border:1px solid}
+.wo-critical{background:#FFF5F5;border-color:#F5B8B8}
+.wo-high{background:#FFFBF0;border-color:#FDE8A8}
+.wo-opp{background:#F0FDF4;border-color:#A7F3D0}
+.wo-lbl{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.3rem}
+.wo-critical .wo-lbl{color:var(--red)} .wo-high .wo-lbl{color:#92400E} .wo-opp .wo-lbl{color:#065F46}
+.wo-title{font-family:'Sora',sans-serif;font-size:.82rem;font-weight:700;color:var(--tp);margin-bottom:.3rem;line-height:1.35}
+.wo-body{font-size:11.5px;color:var(--ts);line-height:1.5}
+
+/* Sub-nav */
+.brief-subnav{display:flex;gap:3px;margin-bottom:1.4rem;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:4px;width:fit-content}
+.bstab{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;padding:.45rem .95rem;border:none;background:none;cursor:pointer;border-radius:5px;color:var(--tm);transition:all .15s;white-space:nowrap}
+.bstab:hover{color:var(--tp);background:var(--bg)}
+.bstab.active{background:var(--dark);color:white}
+
+/* Company cards */
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:.85rem}
+.comp-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,border-color .2s}
+.comp-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.07);border-color:var(--border2)}
+.cc-head{padding:.8rem .95rem;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;border-bottom:1px solid var(--border)}
+.cc-name{font-family:'Sora',sans-serif;font-size:.88rem;font-weight:700;color:var(--tp)}
+.cc-meta{font-size:10.5px;color:var(--tm);margin-top:2px;line-height:1.4}
+.cc-emp{display:inline-flex;align-items:center;gap:3px;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:10px;margin-top:4px}
+.cc-emp.up{background:var(--green-bg);color:#065F46} .cc-emp.down{background:var(--red-pale);color:var(--red-dark)} .cc-emp.flat{background:#F3F4F6;color:#4B5563}
+.badge{font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.b-high{background:#FEE2E2;color:#991B1B} .b-mid{background:#FEF3C7;color:#92400E} .b-low{background:#D1FAE5;color:#065F46}
+.b-th{background:var(--red);color:white} .b-tm{background:var(--amber);color:white} .b-tl{background:#9CA3AF;color:white}
+.cc-body{padding:.75rem .95rem;flex:1;display:flex;flex-direction:column;gap:.5rem}
+.cc-row{display:flex;gap:.55rem;align-items:baseline}
+.cc-rl{font-size:10px;color:var(--tm);font-weight:700;text-transform:uppercase;letter-spacing:.04em;width:72px;flex-shrink:0;line-height:1.5}
+.cc-rv{font-size:11.5px;color:var(--ts);line-height:1.4}
+.cc-rv strong{color:var(--tp);font-weight:600}
+.cc-rv.lh{color:var(--red);font-weight:600} .cc-rv.lm{color:var(--amber);font-weight:600} .cc-rv.ll{color:var(--green);font-weight:600}
+.cc-signal{margin-top:auto;background:var(--bg);border-radius:6px;padding:.55rem .8rem}
+.cc-signal-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--tm);margin-bottom:2px}
+.cc-signal p{font-size:11px;color:var(--ts);line-height:1.45}
+
+/* Outsider cards */
+.comp-card.outsider{border-top:3px solid var(--border2)}
+.comp-card.th{border-top-color:var(--red)} .comp-card.tm{border-top-color:var(--amber)} .comp-card.tl{border-top-color:#9CA3AF}
+.threat-why{font-size:11px;font-weight:500;padding:.55rem .95rem;border-bottom:1px solid;line-height:1.4}
+.th .threat-why{background:var(--red-pale);color:var(--red-dark);border-color:var(--red-light)}
+.tm .threat-why{background:#FFFBEB;color:#78350F;border-color:#FDE68A}
+.tl .threat-why{background:#F9FAFB;color:#6B7280;border-color:var(--border)}
+
+/* LOE Radar */
+.loe-wrap{display:flex;flex-direction:column;gap:.9rem}
+.loe-blk{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.loe-yr-head{padding:.65rem 1rem;background:var(--dark2);display:flex;align-items:center;gap:.65rem}
+.loe-yr{font-family:'Sora',sans-serif;font-size:1.05rem;font-weight:700;color:white}
+.loe-yr-sub{font-size:10.5px;color:rgba(255,255,255,.45);background:rgba(255,255,255,.07);padding:2px 9px;border-radius:10px}
+.loe-drugs{display:flex;flex-wrap:wrap;gap:.55rem;padding:.85rem 1rem}
+.loe-pill{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:.5rem .75rem;min-width:150px;flex:1;max-width:220px}
+.loe-pill-co{font-size:9.5px;color:var(--tm);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1px}
+.loe-pill-name{font-family:'Sora',sans-serif;font-size:.78rem;font-weight:700;color:var(--tp)}
+.loe-pill-rev{font-size:10.5px;font-weight:600;margin-top:2px}
+.loe-pill-rev.hi{color:var(--red)} .loe-pill-rev.mid{color:var(--amber)} .loe-pill-rev.lo{color:var(--tm)}
+.loe-note{font-size:11px;color:var(--tm);padding:.5rem 1rem .75rem;border-top:1px solid var(--border);font-style:italic}
+.loe-total-note{background:var(--red-pale);border:1px solid var(--red-light);border-radius:8px;padding:.85rem 1rem;font-size:12.5px;color:var(--red-dark);margin-top:.3rem}
+.loe-total-note strong{font-weight:700}
+
+/* Talent table */
+.talent-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.talent-head{padding:.8rem 1rem;border-bottom:1px solid var(--border);font-family:'Sora',sans-serif;font-size:.9rem;font-weight:700;color:var(--tp);display:flex;align-items:center;justify-content:space-between}
+.talent-head span{font-size:11px;font-weight:400;color:var(--tm)}
+table.ttbl{width:100%;border-collapse:collapse}
+table.ttbl th{font-size:9.5px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:.06em;padding:.6rem 1rem;text-align:left;background:var(--bg);border-bottom:1px solid var(--border)}
+table.ttbl td{padding:.6rem 1rem;font-size:12px;border-bottom:1px solid var(--border);color:var(--ts);vertical-align:top}
+table.ttbl tr:last-child td{border-bottom:none}
+table.ttbl tr:hover td{background:#FAFAF9}
+.t-co{font-weight:600;color:var(--tp);font-size:12.5px}
+.t-hq{font-size:10.5px;color:var(--tm);margin-top:1px}
+.tup{color:var(--green);font-weight:700} .tdn{color:var(--red);font-weight:700} .tfl{color:var(--tm);font-weight:600}
+.t-sig{font-size:11px;color:var(--ts);line-height:1.4}
+.talent-divider td{background:var(--bg)!important;font-size:9.5px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:.07em;padding:.45rem 1rem!important;border-top:1px solid var(--border2)!important}
+
+footer{text-align:center;padding:1.5rem 2rem;font-size:11px;color:var(--tm);border-top:1px solid var(--border);margin-top:2rem;background:white}
 </style>
 </head>
 <body>
@@ -179,11 +207,11 @@ footer{text-align:center;padding:1.75rem 2rem;font-size:11.5px;color:var(--tm);b
   <div class="header-top">
     <div class="brand">
       <div class="brand-mark">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 7v5c0 5.25 3.4 10.15 8 11.5C16.6 22.15 20 17.25 20 12V7L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2L4 7v5c0 5.25 3.4 10.15 8 11.5C16.6 22.15 20 17.25 20 12V7L12 2z"/></svg>
       </div>
       <div class="brand-text">
         <h1>Pharma Talent Intel</h1>
-        <p>Takeda · Talent Acquisition & Competitive Intelligence</p>
+        <p>Takeda · Talent Acquisition &amp; Competitive Intelligence</p>
       </div>
     </div>
     <div class="header-right">
@@ -196,24 +224,23 @@ footer{text-align:center;padding:1.75rem 2rem;font-size:11.5px;color:var(--tm);b
 <div class="page-tabs">
   <div class="page-tabs-inner">
     <button class="page-tab active" onclick="showPage('briefing',this)">Daily Briefing</button>
-    <button class="page-tab" onclick="showPage('ci',this)">Competitor Intelligence</button>
+    <button class="page-tab" onclick="showPage('compbrief',this)">Competitor Brief</button>
     <button class="page-tab" onclick="showPage('mfg',this)">Manufacturing Dashboard</button>
   </div>
 </div>
 
-<!-- DAILY BRIEFING PAGE -->
+<!-- ─── DAILY BRIEFING ─── -->
 <div id="briefingPage" class="page active">
   <div class="search-wrap">
     <div class="search-inner">
       <div class="search-box">
-        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="searchInput" placeholder="Search articles by keyword…" oninput="onSearch()" />
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search articles…" oninput="onSearch()"/>
         <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
       </div>
       <span class="result-count" id="resultCount"></span>
     </div>
   </div>
-
   <div class="cat-nav">
     <div class="cat-nav-inner">
       <button class="cat-tab active" data-cat="all" onclick="filterCat('all',this)">All <span class="cnt" id="c-all">0</span></button>
@@ -225,152 +252,515 @@ footer{text-align:center;padding:1.75rem 2rem;font-size:11.5px;color:var(--tm);b
       <button class="cat-tab" data-cat="ci" onclick="filterCat('ci',this)">Competitor Intel <span class="cnt" id="c-ci">0</span></button>
     </div>
   </div>
-
   <main>
-    <div class="status-bar">
-      <span id="statusText">Loading news…</span>
-      <span id="updatedAt"></span>
-    </div>
-    <div id="newsContainer">
-      <div class="loading-state"><div class="spinner"></div><p>Fetching pharma news…</p></div>
-    </div>
+    <div class="status-bar"><span id="statusText">Loading…</span><span id="updatedAt"></span></div>
+    <div id="newsContainer"><div class="loading-state"><div class="spinner"></div><p>Fetching pharma news…</p></div></div>
   </main>
 </div>
 
-<!-- COMPETITOR INTELLIGENCE PAGE -->
-<div id="ciPage" class="page">
-  <main>
-    <div class="ci-header" style="margin-top:.5rem">
-      <h2>Competitor Intelligence Radar</h2>
-      <p>News density by competitor and category — based on articles from the last 48 hours. Click a cell to explore those articles.</p>
-    </div>
+<!-- ─── COMPETITOR BRIEF ─── -->
+<div id="compBriefPage" class="page">
+<main>
 
-    <div class="vol-section">
-      <h3>Overall mention volume</h3>
-      <div class="vol-bars" id="volBars"><div class="loading-state" style="padding:1rem"><div class="spinner"></div></div></div>
-    </div>
-
-    <div class="heatmap-wrap">
-      <div class="heatmap-title">
-        <h3>Category × Competitor heatmap</h3>
-        <div class="heatmap-legend">
-          <span>Low</span>
-          <div class="legend-scale">
-            <div class="legend-swatch" style="background:#FDE8E8"></div>
-            <div class="legend-swatch" style="background:#FAC5C5"></div>
-            <div class="legend-swatch" style="background:#F58484"></div>
-            <div class="legend-swatch" style="background:#E1242A"></div>
-          </div>
-          <span>High</span>
-        </div>
-      </div>
-      <div class="heatmap-scroll">
-        <table class="heatmap" id="heatmapTable">
-          <thead><tr>
-            <th class="comp-col">Competitor</th>
-            <th>Workforce &amp; Talent</th>
-            <th>M&amp;A</th>
-            <th>R&amp;D Pipeline</th>
-            <th>AI in Pharma</th>
-            <th>Regulatory</th>
-            <th>Competitor Intel</th>
-            <th>Total</th>
-          </tr></thead>
-          <tbody id="heatmapBody">
-            <tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--tm)">Loading…</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="comp-detail" id="compDetail" style="display:none">
-      <div class="comp-detail-header">
-        <h3 id="compDetailTitle">—</h3>
-        <span id="compDetailCount">—</span>
-      </div>
-      <div class="comp-detail-body">
-        <div class="comp-articles-grid" id="compDetailArticles"></div>
-      </div>
-    </div>
-  </main>
+<div class="brief-head">
+  <div>
+    <h2>Competitor Intelligence Brief</h2>
+    <p>25 companies tracked across Big Pharma &amp; Emerging Disruptors · Sourced from Q1 2026 earnings, annual reports, clinical data &amp; M&amp;A disclosures</p>
+  </div>
+  <span class="brief-stamp">May 2026 snapshot</span>
 </div>
 
-<!-- MANUFACTURING DASHBOARD PAGE -->
+<!-- KPIs -->
+<div class="kpi-strip">
+  <div class="kpi-card"><div class="kpi-val">25</div><div class="kpi-lbl">Companies Tracked</div></div>
+  <div class="kpi-card kr"><div class="kpi-val">5</div><div class="kpi-lbl">HIGH-Threat Outsiders</div></div>
+  <div class="kpi-card ka"><div class="kpi-val">$300B+</div><div class="kpi-lbl">Patent Cliff 2025–28</div></div>
+  <div class="kpi-card"><div class="kpi-val">~26K</div><div class="kpi-lbl">Active Industry Layoffs</div></div>
+  <div class="kpi-card kr"><div class="kpi-val">3</div><div class="kpi-lbl">Takeda Franchises Under Direct Threat</div></div>
+</div>
+
+<!-- Watchouts -->
+<div class="watchout-grid">
+  <div class="wo wo-critical">
+    <div class="wo-lbl">⚡ CRITICAL · Oveporexton Launch</div>
+    <div class="wo-title">Lilly acquires Centessa for $7.8B (Mar 31, 2026)</div>
+    <div class="wo-body">Cleminorexton (OX2R agonist) is a <strong>mechanistic twin to oveporexton</strong>, now backed by Lilly's $60B+ cash position, neuroscience KOL network, and commercial infrastructure. Integration expected Q3 2026. This fundamentally changes the narcolepsy competitive landscape — from a biotech entrant to a Lilly full-force launch.</div>
+  </div>
+  <div class="wo wo-critical">
+    <div class="wo-lbl">⚡ HIGH RISK · Entyvio $6.8B</div>
+    <div class="wo-title">Spyre SPY001 — "best-in-class" α4β7 Phase 2 data (Apr 2026)</div>
+    <div class="wo-body">SPY001 targets the <strong>exact same mechanism as Entyvio</strong> but with potentially superior subcutaneous efficacy. SKYLINE Phase 2: −9.2 RHI, 40% remission, 51% endoscopic improvement. $403M raised at $62/share opens Phase 3 path. Any Big Pharma acquirer of Spyre becomes an instant Entyvio direct competitor.</div>
+  </div>
+  <div class="wo wo-high">
+    <div class="wo-lbl">⚠ HIGH RISK · PDT Franchise</div>
+    <div class="wo-title">FcRn class (argenx + UCB + Immunovant) cannibalising IVIG/SCIG</div>
+    <div class="wo-body">argenx at <strong>$5.2B annualised (+90% YoY)</strong>, UCB RYSTIGGO growing +65%, Immunovant with $994.5M cash targeting RA/lupus/Graves'. FcRn inhibitors structurally replace immunoglobulin therapies across CIDP, gMG, ITP — the core of Takeda's PDT business. 17 consecutive growth quarters for argenx.</div>
+  </div>
+  <div class="wo wo-opp">
+    <div class="wo-lbl">✓ TALENT OPPORTUNITY</div>
+    <div class="wo-title">~26K+ roles cut at BMS, Pfizer &amp; Merck — active recruit window</div>
+    <div class="wo-body">Bristol-Myers ($2B+ restructuring, NJ sites), Pfizer (13,000+ since 2023), Merck (~6,000 planned) are collectively displacing deep <strong>oncology, hematology, commercial, and regulatory talent</strong>. Prime window to attract talent for Takeda's three upcoming launches: oveporexton, rusfertide, zasocitinib.</div>
+  </div>
+</div>
+
+<!-- Section tabs -->
+<div class="brief-subnav">
+  <button class="bstab active" onclick="showBriefSec('bp',this)">Big Pharma · 15</button>
+  <button class="bstab" onclick="showBriefSec('os',this)">Outsiders to Watch · 10</button>
+  <button class="bstab" onclick="showBriefSec('loe',this)">LOE Radar</button>
+  <button class="bstab" onclick="showBriefSec('talent',this)">Talent Signals</button>
+</div>
+
+<!-- BIG PHARMA -->
+<div id="brief-bp" class="brief-sec">
+<div class="comp-grid">
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Johnson &amp; Johnson</div><div class="cc-meta">New Brunswick, NJ &nbsp;·&nbsp; ~138,000 employees ↓ post-Kenvue</div><span class="cc-emp down">↓ post-spinoff</span></div>
+      <span class="badge b-mid">MID LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Darzalex</strong> $11.7B · <strong>Stelara</strong> $10.4B · Tremfya</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv lm">Stelara biosimilar entry 2025/2026</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Oncology · Immunology (GI/Inflammation)</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Expanding oncology commercial teams; actively hiring in immunology to support Tremfya transition post-Stelara LOE. Hematology franchise (Darzalex) growing.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">AbbVie</div><div class="cc-meta">North Chicago, IL &nbsp;·&nbsp; ~50,000 employees</div><span class="cc-emp flat">→ stable</span></div>
+      <span class="badge b-mid">MID LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Skyrizi</strong> $11.7B · <strong>Rinvoq</strong> $6B · Humira $9B (↓)</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv lm">Humira biosimilar erosion ongoing</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Immunology/GI · Oncology · Neuroscience (Vraylar)</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Aggressive immunology commercial hiring; building neuroscience sales force for Vraylar; AI/data analytics expansion. Rinvoq in UC/CD competes directly with Entyvio.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Roche</div><div class="cc-meta">Basel, Switzerland &nbsp;·&nbsp; ~101,000 employees</div><span class="cc-emp up">↑ expanding</span></div>
+      <span class="badge b-mid">MID LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Ocrevus</strong> $7.5B · <strong>Hemlibra</strong> $4.8B · Perjeta/Herceptin</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv lm">Multiple oncology biologics facing biosimilar pressure</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Oncology · Neuroscience · Diagnostics-pharma integration</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>$50B US manufacturing investment announced; 12,000+ new jobs planned. Diagnostics-pharma integration gives Roche a unique talent model — targeting dual-skilled data/clinical profiles.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Novartis</div><div class="cc-meta">Basel, Switzerland &nbsp;·&nbsp; ~78,000 post-Sandoz spinoff</div><span class="cc-emp down">↓ -0.8%</span></div>
+      <span class="badge b-high">HIGH LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Entresto</strong> $7.5B · <strong>Kisqali</strong> $3.5B · <strong>Cosentyx</strong> $4.5B</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv lh">Entresto generic entry 2025 — $7.5B at risk</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Oncology · Cardiovascular · Rare Disease</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Workforce trimming (-0.8% 2025) while heavily investing in AI-driven drug discovery and data science talent. Aggressive digital health strategy to offset LOE.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">AstraZeneca</div><div class="cc-meta">Cambridge, UK &nbsp;·&nbsp; ~96,100 employees</div><span class="cc-emp up">↑ consistent growth</span></div>
+      <span class="badge b-low">LOW LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Tagrisso</strong> $5.7B · <strong>Farxiga</strong> $6.5B · Imfinzi</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv ll">Tagrisso protection extends to 2032+</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Oncology · Rare Disease (growing aggressively)</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>One of few pharmas consistently growing headcount. Major global oncology and rare disease hiring. Aggressive pipeline expansion through M&amp;A. Competes directly for Takeda's rare disease talent.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Bristol-Myers Squibb</div><div class="cc-meta">Princeton, NJ &nbsp;·&nbsp; ~32,000 employees</div><span class="cc-emp down">↓ -4.7%</span></div>
+      <span class="badge b-high">HIGH LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Eliquis</strong> $13B · <strong>Opdivo</strong> $9B · Revlimid (↓↓)</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv lh">Eliquis 2026 + Opdivo 2028 = $38B gap — steepest cliff of any peer</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Oncology (IO + Hematology) · Cardiovascular</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Deep restructuring underway. $2B+ cost-cutting, significant layoffs at NJ sites. Deep oncology/hematology commercial &amp; medical talent being displaced — <strong>prime Takeda recruiting pool</strong>.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Pfizer</div><div class="cc-meta">New York, NY &nbsp;·&nbsp; ~75,000 (decade-low)</div><span class="cc-emp down">↓ -13K+ since 2023</span></div>
+      <span class="badge b-high">HIGH LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv">Eliquis $6B (co-mkt) · <strong>Prevnar</strong> $6.4B · <strong>Vyndaqel</strong> $4.6B</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv lh">Prevnar 2026 · Ibrance 2027 · Xtandi 2027 (co-mkt)</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Oncology · Vaccines · Xtandi co-marketing (Astellas)</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>$7.7B cost savings target through 2027. 13,000+ jobs cut since 2023 — commercial, R&amp;D support, and manufacturing. Massive talent pool available across all functions.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Merck &amp; Co.</div><div class="cc-meta">Rahway, NJ &nbsp;·&nbsp; ~75,000 employees</div><span class="cc-emp down">↓ ~-6K planned</span></div>
+      <span class="badge b-high">HIGH LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Keytruda</strong> $29.5B · <strong>Gardasil</strong> $8.6B · Winrevair</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv lh">Keytruda 2028 — biggest single-product LOE in pharma history</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Oncology (IO) · Vaccines · Cardiovascular (Winrevair)</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>$3B annual cost-cutting; ~6,000 job reductions planned. Racing to hire for Winrevair launch and subQ Keytruda transition before 2028 cliff. Significant commercial displacement incoming.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Sanofi</div><div class="cc-meta">Paris, France &nbsp;·&nbsp; ~83,000 post-Opella</div><span class="cc-emp down">↓ -8,000 Opella</span></div>
+      <span class="badge b-low">LOW LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Dupixent</strong> $13.6B · Kevzara · Aubagio</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv ll">Aubagio 2025 (small). Dupixent protected well into 2030s</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Rare Disease · Immunology/Inflammation · Vaccines (dengue)</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Opella divestiture cut ~8,000 consumer roles. Shifting entire workforce toward biologics, rare disease, and AI-enabled R&amp;D. Both companies compete for dengue vaccine talent.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Eli Lilly</div><div class="cc-meta">Indianapolis, IN &nbsp;·&nbsp; ~50,000 employees</div><span class="cc-emp up">↑ +6.4% / +3,000</span></div>
+      <span class="badge b-low">LOW LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Mounjaro</strong> $15.5B · <strong>Zepbound</strong> $9.2B · Verzenio</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv ll">Verzenio 2031+ · Trulicity 2027 (modest impact)</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Neuroscience (Alzheimer's) · Oncology · now Narcolepsy via Centessa</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Massive $9B Indiana manufacturing expansion; 3,000+ new jobs. Highest rev/employee growth among all peers (+36%). 4th acquisition in 12 months (Centessa). Now a direct narcolepsy competitor.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Amgen</div><div class="cc-meta">Thousand Oaks, CA &nbsp;·&nbsp; ~31,500 employees</div><span class="cc-emp up">↑ +12.5% / +3,500</span></div>
+      <span class="badge b-mid">MID LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Repatha</strong> $2.5B · <strong>Prolia/XGEVA</strong> $4.5B · Tezspire</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv lm">Prolia 2025 · Otezla 2028. Biosimilar portfolio vs Takeda biologics</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Biosimilars · Oncology · Inflammation · Rare Disease</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Largest headcount jump among all peers (+12.5%). Aggressive hiring in manufacturing, oncology, and obesity pipeline (MariTide). BioMarin acquisition adds rare disease talent competition.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Gilead Sciences</div><div class="cc-meta">Foster City, CA &nbsp;·&nbsp; ~17,000 employees</div><span class="cc-emp down">↓ -3.4% / -580</span></div>
+      <span class="badge b-low">LOW LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Biktarvy</strong> $13.6B · Yescarta · Lenacapavir (Yeztugo)</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv ll">Biktarvy protected to 2033+. Clean near-term runway</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Oncology (CAR-T) · Virology · Rare Disease talent pool</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Lean model ($1.73M rev/employee — highest in pharma). Preparing for lenacapavir HIV prevention launch. Tubulis acquisition ($5B) adds oncology ADC capabilities. Competes for rare disease talent.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Astellas Pharma</div><div class="cc-meta">Tokyo, Japan &nbsp;·&nbsp; ~14,000 employees</div><span class="cc-emp flat">→ rebuilding</span></div>
+      <span class="badge b-high">HIGH LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Xtandi</strong> $5.2B · <strong>PADCEV</strong> $2.5B · VEOZAH</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv lh">Xtandi US patent expiry 2027 (co-mkt w/ Pfizer) — $5.2B at risk</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">Oncology/Urology · Direct Japanese peer · Same-market talent</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Building immuno-oncology capabilities; gene/cell therapy hiring. YASKAWA manufacturing partnership. Compete for same Japan-based talent with similar global ambitions to Takeda.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">CSL Behring</div><div class="cc-meta">King of Prussia, PA &nbsp;·&nbsp; ~30,000 employees</div><span class="cc-emp down">↓ -8.5% / -2,800</span></div>
+      <span class="badge b-low">LOW LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Privigen/Hizentra</strong> (IVIG/SCIG) · Hemgenix · plasma coagulation portfolio</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv ll">Biologics-based — no traditional patent cliff. ~33% global PDT share</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">PDT direct competitor #1 · Plasma collection (BioLife rivalry)</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Headcount reduction (-8.5%); restructuring Wuhan operations. Focused hiring in plasma science and rare disease. BioLife donor centres compete directly with Takeda's plasma collection network.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="cc-head">
+      <div><div class="cc-name">Grifols</div><div class="cc-meta">Barcelona, Spain &nbsp;·&nbsp; ~23,800 employees</div><span class="cc-emp down">↓ reshaping</span></div>
+      <span class="badge b-low">LOW LOE</span>
+    </div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>GAMUNEX-C · EMBIFY</strong> (SCIG) · Albumin products</span></div>
+      <div class="cc-row"><span class="cc-rl">Key LOE</span><span class="cc-rv ll">Biologics-based — no traditional LOE. ~13% global PDT share</span></div>
+      <div class="cc-row"><span class="cc-rl">TA overlap</span><span class="cc-rv">PDT direct competitor #2 · 400+ plasma donation centres</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Post-turnaround governance overhaul underway. New CEO and Board Chair (first non-family leadership). Governance-driven talent refresh across senior ranks — watch for displaced executive talent.</p></div>
+    </div>
+  </div>
+
+</div><!-- /comp-grid -->
+</div><!-- /brief-bp -->
+
+<!-- OUTSIDERS -->
+<div id="brief-os" class="brief-sec" style="display:none">
+<div class="comp-grid">
+
+  <div class="comp-card outsider th">
+    <div class="cc-head">
+      <div><div class="cc-name">argenx</div><div class="cc-meta">Breda, Netherlands · Boston · China (Mar 2026)</div><span class="cc-emp up">↑ +16.5% YoY / +260</span></div>
+      <span class="badge b-th">HIGH THREAT</span>
+    </div>
+    <div class="threat-why">FcRn inhibitor VYVGART structurally replaces IVIG/SCIG — <strong>existential threat to Takeda's PDT franchise</strong>. $5.2B annualised revenue. 17 consecutive growth quarters.</div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Revenue</span><span class="cc-rv"><strong>$4.15B FY2025</strong> (+90% YoY) · Q1 2026: $1.3B (+63%)</span></div>
+      <div class="cc-row"><span class="cc-rl">Pipeline</span><span class="cc-rv">VYVGART · ARGX-213 (next-gen FcRn) · Empasiprubart (MMN)</span></div>
+      <div class="cc-row"><span class="cc-rl">Watch</span><span class="cc-rv lh">PDUFA seroneg. gMG expansion May 2026 · Rheumatology readout Q3 2026</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Hypergrowth hiring (+16% YoY); opened China affiliate Mar 2026; aggressively recruiting rare disease &amp; neurology talent that Takeda also targets.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card outsider th">
+    <div class="cc-head">
+      <div><div class="cc-name">Jazz Pharmaceuticals</div><div class="cc-meta">Dublin · Philadelphia · Palo Alto</div><span class="cc-emp flat">~2,800 employees</span></div>
+      <span class="badge b-th">HIGH THREAT</span>
+    </div>
+    <div class="threat-why"><strong>Incumbent in narcolepsy</strong> — the exact market oveporexton enters. 16,175 active Xywav patients, deep KOL relationships, payer infrastructure already built.</div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Revenue</span><span class="cc-rv"><strong>Xywav $1.7B</strong> (2025) · Epidiolex · Zanidatamab (GEA launch)</span></div>
+      <div class="cc-row"><span class="cc-rl">Watch</span><span class="cc-rv lm">Generic narcolepsy entry expected H2 2026 — market disruption ahead</span></div>
+      <div class="cc-row"><span class="cc-rl">Cash</span><span class="cc-rv">$2.9B available for deals · New CBO Jan 2026</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>New Chief Business Officer driving M&amp;A; focused on sleep, epilepsy, rare disease talent. Active talent retention ahead of generic competition and oveporexton launch.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card outsider th">
+    <div class="cc-head">
+      <div><div class="cc-name">UCB</div><div class="cc-meta">Brussels, Belgium &nbsp;·&nbsp; ~9,000–10,000 employees · $61B market cap</div><span class="cc-emp up">↑ expanding</span></div>
+      <span class="badge b-th">HIGH THREAT</span>
+    </div>
+    <div class="threat-why"><strong>Triple TA overlap</strong>: Bimzelx (immunology) + RYSTIGGO (FcRn/PDT disruption) + FINTEPLA (neuroscience). Revenue +32% YoY to $8.7B. Fully transformed.</div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv"><strong>Bimzelx</strong> €2.23B (+267%) · RYSTIGGO €332M (+65%) · ZILBRYSQ · FINTEPLA</span></div>
+      <div class="cc-row"><span class="cc-rl">Invest</span><span class="cc-rv lh">$5B US manufacturing campus — long-term US commitment signal</span></div>
+      <div class="cc-row"><span class="cc-rl">Watch</span><span class="cc-rv">Bimzelx expanding into PsA and axSpA; RYSTIGGO new indications</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Massive manufacturing build ($5B US campus); growing commercial teams across 5+ indications. Aggressive recruiting for Bimzelx label expansions — competes for same immunology talent.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card outsider th">
+    <div class="cc-head">
+      <div><div class="cc-name">Spyre Therapeutics</div><div class="cc-meta">Waltham, MA &nbsp;·&nbsp; ~100–150 employees (pre-commercial)</div><span class="cc-emp up">↑ scaling</span></div>
+      <span class="badge b-th">HIGH THREAT</span>
+    </div>
+    <div class="threat-why">SPY001 targets the <strong>exact same α4β7 mechanism as Entyvio</strong> — potentially superior subcutaneous efficacy. If Phase 3 confirms Phase 2, it is the single biggest threat to Takeda's $6.8B GI franchise.</div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Ph2 data</span><span class="cc-rv lh">SKYLINE Apr 2026: −9.2 RHI · 40% remission · 51% endoscopic improvement</span></div>
+      <div class="cc-row"><span class="cc-rl">Funding</span><span class="cc-rv">$403M raised at $62/share (Apr 2026) · Phase 3 path now open</span></div>
+      <div class="cc-row"><span class="cc-rl">M&amp;A risk</span><span class="cc-rv lh">Any acquirer instantly becomes Entyvio direct competitor — watch Big Pharma bids</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Recruiting GI clinical development talent. $403M gives multi-year runway. High M&amp;A target probability — further readouts mid-2026 and 2027 will determine timeline.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card outsider th">
+    <div class="cc-head">
+      <div><div class="cc-name">Eli Lilly / Centessa</div><div class="cc-meta">Indianapolis · Cambridge, MA · London · deal closed Mar 31, 2026</div><span class="cc-emp flat">Full Lilly resources</span></div>
+      <span class="badge b-th">HIGH THREAT</span>
+    </div>
+    <div class="threat-why"><strong>CRITICAL UPGRADE.</strong> Centessa alone was MID. Centessa + Lilly = HIGH. Cleminorexton (OX2R) is a mechanistic twin to oveporexton, now with Lilly's #1 pharma market cap behind it.</div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Asset</span><span class="cc-rv lh"><strong>Cleminorexton (ORX750)</strong> — OX2R agonist, same target as oveporexton. "Potential best-in-class" Ph2 profile</span></div>
+      <div class="cc-row"><span class="cc-rl">Deal</span><span class="cc-rv">$6.3B + $1.5B CVR · Integration expected Q3 2026</span></div>
+      <div class="cc-row"><span class="cc-rl">Risk</span><span class="cc-rv lh">Lilly's neuroscience sales force + KOL network behind cleminorexton = resource overmatch</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Lilly's 4th acquisition in 12 months. Will deploy existing neuroscience commercial infrastructure. Centessa integration creates executive displacement — watch for key scientific hires.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card outsider tm">
+    <div class="cc-head">
+      <div><div class="cc-name">Axsome Therapeutics</div><div class="cc-meta">New York, NY &nbsp;·&nbsp; ~683 employees (US only)</div><span class="cc-emp up">↑ +25% YoY</span></div>
+      <span class="badge b-tm">MID THREAT</span>
+    </div>
+    <div class="threat-why">Direct narcolepsy competitor to oveporexton. AXS-12 showed <strong>82% cataplexy reduction</strong>. Already has commercial field force via Sunosi (acquired from Jazz). NDA submission imminent.</div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv">Auvelity $638M FY2024 (+65.5%) · Sunosi · AXS-12 (NDA pending)</span></div>
+      <div class="cc-row"><span class="cc-rl">Mechanism</span><span class="cc-rv">NRI (norepinephrine reuptake inhibitor) — differentiated from OX2R approach</span></div>
+      <div class="cc-row"><span class="cc-rl">TA</span><span class="cc-rv">Neuroscience · Sleep/Narcolepsy · Depression</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Workforce grew 6× since 2021 (108→683 employees). Building neuroscience sales team from scratch; aggressively hiring MSLs and commercial leaders from restructuring large pharma companies.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card outsider tm">
+    <div class="cc-head">
+      <div><div class="cc-name">Immunovant</div><div class="cc-meta">Durham, NC (Roivant-backed) &nbsp;·&nbsp; ~200–300 employees</div><span class="cc-emp up">↑ hiring</span></div>
+      <span class="badge b-tm">MID THREAT</span>
+    </div>
+    <div class="threat-why">Third FcRn player expanding beyond argenx's indications into <strong>RA, lupus, Graves', Sjögren's</strong> — widening erosion of Takeda's plasma market in new therapeutic directions.</div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Pipeline</span><span class="cc-rv">IMVT-1402 (next-gen FcRn, "best-in-class") · batoclimab · Ph3 TED results Apr 2026</span></div>
+      <div class="cc-row"><span class="cc-rl">Cash</span><span class="cc-rv">$994.5M (Dec 2025) · $550M raised Dec 2025 · Roivant backing</span></div>
+      <div class="cc-row"><span class="cc-rl">Watch</span><span class="cc-rv lm">D2T RA readout H2 2026 — could accelerate to commercialisation</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Pre-commercial but rapid clinical/regulatory hiring. Roivant shared infrastructure provides recruiting support. HQ relocated to Durham, NC. Multiple Ph3 readouts in H2 2026.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card outsider tm">
+    <div class="cc-head">
+      <div><div class="cc-name">BioMarin Pharmaceutical</div><div class="cc-meta">San Rafael, CA &nbsp;·&nbsp; ~3,200 employees · New CEO (ex-Genentech)</div><span class="cc-emp flat">→ integrating</span></div>
+      <span class="badge b-tm">MID THREAT</span>
+    </div>
+    <div class="threat-why">Completed <strong>$4.8B acquisition of Amicus Therapeutics (May 2026)</strong> — now the largest pure-play rare disease company. Direct overlap with Takeda's rare disease franchise across LSDs and skeletal diseases.</div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Portfolio</span><span class="cc-rv">Voxzogo $660M+ · Brineura · Naglazyme · Galafold · Pombiliti (ex-Amicus)</span></div>
+      <div class="cc-row"><span class="cc-rl">Deal</span><span class="cc-rv">Amicus acquisition May 2026 ($4.8B) — scaled platform, broader KOL reach</span></div>
+      <div class="cc-row"><span class="cc-rl">Leadership</span><span class="cc-rv">New CEO Alexander Hardy (ex-Genentech) · R&amp;D Chief from Amgen</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Integration creates displaced Amicus staff — opportunity to recruit rare disease talent. New CEO reshaping leadership team. Broader rare disease commercial reach post-merger competes with Takeda.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card outsider tm">
+    <div class="cc-head">
+      <div><div class="cc-name">Ipsen</div><div class="cc-meta">Paris, France &nbsp;·&nbsp; ~5,535 employees</div><span class="cc-emp up">↑ +3.3% / +180</span></div>
+      <span class="badge b-tm">MID THREAT</span>
+    </div>
+    <div class="threat-why">Near-identical TA footprint to Takeda (Oncology + Rare Disease + Neuroscience). Q1 2026: <strong>+22.6% total growth, rare disease +125%</strong>. Three Phase 3 readouts in H2 2026.</div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv">Cabometyx · Somatuline · <strong>Iqirvo</strong> (rare liver +125%) · Bylvay · Dysport</span></div>
+      <div class="cc-row"><span class="cc-rl">M&amp;A</span><span class="cc-rv">ImCheck Therapeutics (I-O, Dec 2025) · Origami (rare neurodegeneration)</span></div>
+      <div class="cc-row"><span class="cc-rl">Watch</span><span class="cc-rv lm">3 Phase 3 readouts H2 2026 — could accelerate rare disease positioning</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Expanding rare liver disease commercial teams; building immuno-oncology via ImCheck; active rare disease talent recruitment from companies undergoing restructuring.</p></div>
+    </div>
+  </div>
+
+  <div class="comp-card outsider tl">
+    <div class="cc-head">
+      <div><div class="cc-name">Octapharma</div><div class="cc-meta">Lachen, Switzerland &nbsp;·&nbsp; ~12,000 employees (private)</div><span class="cc-emp flat">→ private / opaque</span></div>
+      <span class="badge b-tl">LOW THREAT</span>
+    </div>
+    <div class="threat-why">3rd-largest plasma company globally. 500+ plasma centres compete with Takeda's BioLife donor network. Aggressive <strong>EU and emerging market pricing competition</strong> on IVIG and coagulation factors.</div>
+    <div class="cc-body">
+      <div class="cc-row"><span class="cc-rl">Products</span><span class="cc-rv">Nuwiq (Factor VIII) · Octagam (IVIG) · Wilate · Fibrygä · Albumin</span></div>
+      <div class="cc-row"><span class="cc-rl">Scope</span><span class="cc-rv">EU, US, LatAm, MEA, Australia · Expanding mfg in Sweden, Austria, Germany</span></div>
+      <div class="cc-row"><span class="cc-rl">Note</span><span class="cc-rv">Flaig family-owned — no public reporting. Hardest company on this list to monitor.</span></div>
+      <div class="cc-signal"><div class="cc-signal-lbl">Talent signal</div><p>Private status makes talent intelligence harder. Steady competitive pressure on PDT pricing, especially in EU. Less disruptive than FcRn class but erodes margins structurally.</p></div>
+    </div>
+  </div>
+
+</div><!-- /comp-grid -->
+</div><!-- /brief-os -->
+
+<!-- LOE RADAR -->
+<div id="brief-loe" class="brief-sec" style="display:none">
+<div class="loe-total-note" style="margin-bottom:1rem">
+  <strong>$300B+ patent cliff exposure 2025–2028.</strong> The industry is facing its largest-ever concentration of LOE events. For Takeda: competitor LOEs create talent pools and M&amp;A urgency; they also increase competitive pressure as affected companies make aggressive pipeline bets to replace revenue.
+</div>
+<div class="loe-wrap">
+  <div class="loe-blk">
+    <div class="loe-yr-head"><span class="loe-yr">2025</span><span class="loe-yr-sub">Active — biosimilar entries underway</span></div>
+    <div class="loe-drugs">
+      <div class="loe-pill"><div class="loe-pill-co">J&J / Janssen</div><div class="loe-pill-name">Stelara (ustekinumab)</div><div class="loe-pill-rev hi">$10.4B · biosimilar entry</div></div>
+      <div class="loe-pill"><div class="loe-pill-co">Novartis</div><div class="loe-pill-name">Entresto (sacubitril/val)</div><div class="loe-pill-rev hi">$7.5B · generic entry</div></div>
+      <div class="loe-pill"><div class="loe-pill-co">Amgen</div><div class="loe-pill-name">Prolia / XGEVA</div><div class="loe-pill-rev mid">$4.5B · biosimilar entry</div></div>
+      <div class="loe-pill"><div class="loe-pill-co">Sanofi</div><div class="loe-pill-name">Aubagio (teriflunomide)</div><div class="loe-pill-rev lo">Modest · generic pressure</div></div>
+    </div>
+    <div class="loe-note">Combined ~$22B revenue directly exposed. Stelara erosion gives J&J acute urgency to grow Tremfya and Darzalex — increasing pressure in shared Takeda TA of immunology and oncology.</div>
+  </div>
+  <div class="loe-blk">
+    <div class="loe-yr-head"><span class="loe-yr">2026</span><span class="loe-yr-sub">Major cardiovascular LOEs — talent displacement accelerating</span></div>
+    <div class="loe-drugs">
+      <div class="loe-pill"><div class="loe-pill-co">BMS</div><div class="loe-pill-name">Eliquis (apixaban)</div><div class="loe-pill-rev hi">$13B · patent expiry</div></div>
+      <div class="loe-pill"><div class="loe-pill-co">Pfizer</div><div class="loe-pill-name">Prevnar 20 (PCV20)</div><div class="loe-pill-rev mid">$6.4B · generic competition</div></div>
+      <div class="loe-pill"><div class="loe-pill-co">J&J</div><div class="loe-pill-name">Stelara (full erosion)</div><div class="loe-pill-rev mid">Full biosimilar impact year</div></div>
+    </div>
+    <div class="loe-note">BMS faces $13B Eliquis cliff — triggering the deep restructuring that is creating the current oncology/hematology talent displacement opportunity for Takeda.</div>
+  </div>
+  <div class="loe-blk">
+    <div class="loe-yr-head"><span class="loe-yr">2027</span><span class="loe-yr-sub">Oncology and GLP-1 LOEs — M&amp;A scramble expected</span></div>
+    <div class="loe-drugs">
+      <div class="loe-pill"><div class="loe-pill-co">Pfizer / Astellas</div><div class="loe-pill-name">Xtandi (enzalutamide)</div><div class="loe-pill-rev hi">$5.2B · US patent expiry</div></div>
+      <div class="loe-pill"><div class="loe-pill-co">Pfizer</div><div class="loe-pill-name">Ibrance (palbociclib)</div><div class="loe-pill-rev mid">CDK4/6i · generic risk</div></div>
+      <div class="loe-pill"><div class="loe-pill-co">Eli Lilly</div><div class="loe-pill-name">Trulicity (dulaglutide)</div><div class="loe-pill-rev lo">Replaced by Mounjaro/Zepbound</div></div>
+    </div>
+    <div class="loe-note">Astellas Xtandi cliff ($5.2B) is a critical event for a direct Japanese peer — expect aggressive pipeline push and talent restructuring. Pfizer's combined 2026-2027 LOEs create the largest commercial talent pool in the industry.</div>
+  </div>
+  <div class="loe-blk">
+    <div class="loe-yr-head"><span class="loe-yr">2028</span><span class="loe-yr-sub">Largest single-product LOE in pharma history</span></div>
+    <div class="loe-drugs">
+      <div class="loe-pill"><div class="loe-pill-co">Merck &amp; Co.</div><div class="loe-pill-name">Keytruda (pembrolizumab)</div><div class="loe-pill-rev hi">$29.5B · biggest ever single LOE</div></div>
+      <div class="loe-pill"><div class="loe-pill-co">BMS</div><div class="loe-pill-name">Opdivo (nivolumab)</div><div class="loe-pill-rev hi">$9B · biosimilar entry</div></div>
+      <div class="loe-pill"><div class="loe-pill-co">AbbVie</div><div class="loe-pill-name">Otezla (apremilast)</div><div class="loe-pill-rev mid">Generic competition</div></div>
+      <div class="loe-pill"><div class="loe-pill-co">BMS</div><div class="loe-pill-name">Eliquis (full erosion)</div><div class="loe-pill-rev mid">Second year of full erosion</div></div>
+    </div>
+    <div class="loe-note">Merck's Keytruda cliff ($29.5B) will trigger the largest commercial reorganisation in oncology history — generating an unprecedented talent pool. Both Merck and BMS will be simultaneously restructuring in 2028, flooding the market with IO/oncology talent. Plan Takeda's recruiting strategy 18–24 months ahead.</div>
+  </div>
+</div>
+</div><!-- /brief-loe -->
+
+<!-- TALENT SIGNALS -->
+<div id="brief-talent" class="brief-sec" style="display:none">
+<div class="talent-wrap">
+  <div class="talent-head">Workforce Signals — May 2026 <span>Sorted by strategic relevance to Takeda's talent agenda</span></div>
+  <div style="overflow-x:auto">
+  <table class="ttbl">
+    <thead><tr><th>Company</th><th>Trend</th><th>Change</th><th>Takeda Relevance &amp; Signal</th></tr></thead>
+    <tbody>
+      <tr class="talent-divider"><td colspan="4">↑ GROWING — active competition for talent</td></tr>
+      <tr><td><div class="t-co">argenx</div><div class="t-hq">Breda / Boston</div></td><td><span class="tup">↑ Growing</span></td><td><span class="tup">+16.5% / +260</span></td><td><span class="t-sig">Hypergrowth commercial build globally. Opening China affiliate. Recruiting rare disease &amp; neurology talent — direct competition with Takeda's PDT and rare disease teams.</span></td></tr>
+      <tr><td><div class="t-co">Amgen</div><div class="t-hq">Thousand Oaks, CA</div></td><td><span class="tup">↑ Growing</span></td><td><span class="tup">+12.5% / +3,500</span></td><td><span class="t-sig">Largest headcount jump among Big Pharma peers. Manufacturing scale-up, oncology commercial, and obesity pipeline (MariTide). Competing for same rare disease talent via BioMarin acquisition.</span></td></tr>
+      <tr><td><div class="t-co">Eli Lilly</div><div class="t-hq">Indianapolis, IN</div></td><td><span class="tup">↑ Growing</span></td><td><span class="tup">+6.4% / +3,000</span></td><td><span class="t-sig">$9B Indiana manufacturing investment. 3,000+ new manufacturing and commercial roles. Now a direct narcolepsy competitor (Centessa). Competes for neuroscience and manufacturing talent.</span></td></tr>
+      <tr><td><div class="t-co">Roche</div><div class="t-hq">Basel / South San Francisco</div></td><td><span class="tup">↑ Expanding</span></td><td><span class="tup">+12,000 planned</span></td><td><span class="t-sig">$50B US manufacturing commitment. 12,000+ net new jobs planned. Diagnostics-pharma integration model creates unique dual-skilled profiles. Oncology and neuroscience talent competition.</span></td></tr>
+      <tr><td><div class="t-co">AstraZeneca</div><div class="t-hq">Cambridge, UK / Gaithersburg</div></td><td><span class="tup">↑ Consistent</span></td><td><span class="tup">~96,100 (+)</span></td><td><span class="t-sig">One of the few pharmas consistently growing headcount. Major global hiring in oncology and rare disease — directly competing with Takeda for the same talent profiles.</span></td></tr>
+      <tr><td><div class="t-co">UCB</div><div class="t-hq">Brussels, Belgium</div></td><td><span class="tup">↑ Expanding</span></td><td><span class="tup">+5B US mfg</span></td><td><span class="t-sig">$5B US manufacturing campus investment. Growing commercial teams across 5+ indications (Bimzelx, RYSTIGGO, ZILBRYSQ, FINTEPLA, EVENITY). Competes for immunology, neuroscience, and plasma talent.</span></td></tr>
+      <tr><td><div class="t-co">Ipsen</div><div class="t-hq">Paris, France</div></td><td><span class="tup">↑ Growing</span></td><td><span class="tup">+3.3% / +180</span></td><td><span class="t-sig">Expanding rare liver disease commercial teams. ImCheck I-O acquisition adds oncology talent needs. Origami collaboration in rare neurodegeneration. Same 3 TAs as Takeda — direct talent overlap.</span></td></tr>
+      <tr><td><div class="t-co">Axsome Therapeutics</div><div class="t-hq">New York, NY</div></td><td><span class="tup">↑ Scaling</span></td><td><span class="tup">+25% / +140</span></td><td><span class="t-sig">Workforce grew 6× since 2021. Building neuroscience sales team from scratch — actively poaching from restructuring large pharma. Competes for same sleep/narcolepsy MSL and KOL talent.</span></td></tr>
+
+      <tr class="talent-divider"><td colspan="4">↓ RESTRUCTURING — talent displacement opportunity</td></tr>
+      <tr><td><div class="t-co">Pfizer</div><div class="t-hq">New York, NY</div></td><td><span class="tdn">↓ Decade-low</span></td><td><span class="tdn">-13,000+ since '23</span></td><td><span class="t-sig"><strong>Largest talent pool in the industry.</strong> $7.7B cost savings through 2027. Commercial, R&amp;D support, manufacturing — all functions affected. Takeda's oveporexton/rusfertide/zasocitinib launch teams should be actively recruiting.</span></td></tr>
+      <tr><td><div class="t-co">Bristol-Myers Squibb</div><div class="t-hq">Princeton, NJ</div></td><td><span class="tdn">↓ Restructuring</span></td><td><span class="tdn">-4.7% / -1,600</span></td><td><span class="t-sig">$2B+ restructuring. Significant NJ site consolidation. Deep oncology, hematology, CAR-T, and cardiovascular commercial/medical talent being displaced. <strong>Prime Takeda recruiting window — now.</strong></span></td></tr>
+      <tr><td><div class="t-co">Merck &amp; Co.</div><div class="t-hq">Rahway, NJ</div></td><td><span class="tdn">↓ Pre-LOE cut</span></td><td><span class="tdn">~-6,000 planned</span></td><td><span class="t-sig">Pre-emptive Keytruda cliff cost-cutting. ~6,000 roles planned. Racing to pivot toward Winrevair &amp; subQ Keytruda — creates IOncology commercial and payer access talent flow into market.</span></td></tr>
+      <tr><td><div class="t-co">Sanofi</div><div class="t-hq">Paris, France</div></td><td><span class="tdn">↓ Post-Opella</span></td><td><span class="tdn">~-8,000 Opella</span></td><td><span class="t-sig">Opella divestiture removed ~8,000 consumer health roles. Shifting toward biologics/rare disease/AI R&amp;D. Some consumer talent transitioning to pharma roles — monitor for rare disease/rare talent opportunities.</span></td></tr>
+      <tr><td><div class="t-co">CSL Behring</div><div class="t-hq">King of Prussia, PA</div></td><td><span class="tdn">↓ Restructuring</span></td><td><span class="tdn">-8.5% / -2,800</span></td><td><span class="t-sig">Wuhan operations restructuring. Focused reduction while maintaining plasma science core. Displaced plasma/coagulation talent are directly relevant to Takeda's PDT operations and BioLife network.</span></td></tr>
+      <tr><td><div class="t-co">Novartis</div><div class="t-hq">Basel, Switzerland</div></td><td><span class="tdn">↓ Trimming</span></td><td><span class="tdn">-0.8% / ~-600</span></td><td><span class="t-sig">Moderate reduction while investing in AI/data science talent. Oncology and rare disease talent rotating out — primarily European market but global function roles available.</span></td></tr>
+      <tr><td><div class="t-co">Gilead Sciences</div><div class="t-hq">Foster City, CA</div></td><td><span class="tdn">↓ Lean</span></td><td><span class="tdn">-3.4% / -580</span></td><td><span class="t-sig">Deliberate lean model. Restructuring pre-lenacapavir launch. CAR-T/oncology commercial talent rotating out of Yescarta roles. Tubulis ADC integration displacing legacy oncology staff.</span></td></tr>
+      <tr><td><div class="t-co">Grifols</div><div class="t-hq">Barcelona, Spain</div></td><td><span class="tdn">↓ Overhaul</span></td><td><span class="tdn">Leadership reshaping</span></td><td><span class="t-sig">Post-turnaround governance overhaul. First non-family CEO and Board Chair. Governance-driven executive refresh — watch for displaced senior PDT and plasma operations leaders.</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div><!-- /brief-talent -->
+
+</main>
+</div><!-- /compBriefPage -->
+
+<!-- MANUFACTURING DASHBOARD -->
 <div id="mfgPage" class="page">
   <iframe class="mfg-iframe" src="manufacturing.html" title="Manufacturing Dashboard"></iframe>
 </div>
 
-<footer>
-  Pharma Talent Intel &nbsp;·&nbsp; Powered by NewsAPI &nbsp;·&nbsp; Built for Takeda TA &amp; CI teams
-</footer>
+<footer>Pharma Talent Intel &nbsp;·&nbsp; Powered by NewsAPI &nbsp;·&nbsp; Built for Takeda TA &amp; CI teams</footer>
 
 <script>
 const CATS = {
-  wf:  { label:'Workforce & Talent',  tag:'tag-wf',  keys:['layoff','layoffs','redundan','headcount','hiring','talent','workforce','employees','staff','job cuts','reorgani','ceo','cfo','coo','appoint','named','joins','departure','resign','executive','leadership','human resources','talent acquisition','recrui','downsiz','reductions'] },
-  ma:  { label:'M&A & Restructuring', tag:'tag-ma',  keys:['acqui','merger','deal','divest','spin-off','spinoff','buyout','takeover','bid','transaction','closing','purchase','consolidat','site closure','plant closure'] },
-  rd:  { label:'R&D Pipeline',        tag:'tag-rd',  keys:['phase 1','phase 2','phase 3','phase i','phase ii','phase iii','clinical trial','pipeline','drug candidate','therapy','treatment','biologic','indication','compound','molecule','efficacy','safety','endpoint','data readout'] },
+  wf:  { label:'Workforce & Talent',  tag:'tag-wf',  keys:['layoff','layoffs','redundan','headcount','hiring','talent','workforce','employees','staff','job cuts','reorgani','ceo','cfo','appoint','named','joins','departure','resign','executive','leadership','talent acquisition','recrui','downsiz'] },
+  ma:  { label:'M&A & Restructuring', tag:'tag-ma',  keys:['acqui','merger','deal','divest','spin-off','spinoff','buyout','takeover','bid','transaction','purchase','consolidat','site closure','plant closure'] },
+  rd:  { label:'R&D Pipeline',        tag:'tag-rd',  keys:['phase 1','phase 2','phase 3','phase i','phase ii','phase iii','clinical trial','pipeline','drug candidate','therapy','treatment','biologic','indication','compound','molecule','efficacy','endpoint','data readout'] },
   ai:  { label:'AI in Pharma',        tag:'tag-ai',  keys:['artificial intelligence','machine learning','deep learning','generative ai','large language','llm','automation','algorithm','digital health','digital transform','data science','predictive'] },
-  reg: { label:'Regulatory',          tag:'tag-reg', keys:['fda','ema','regulatory','regulation','approved','approval','reject','warning letter','compliance','inspection','gmp','clinical hold','patent','exclusivity','label change'] },
-  ci:  { label:'Competitor Intel',    tag:'tag-ci',  keys:['pfizer','novartis','roche','astrazeneca','johnson & johnson','bristol-myers','bms','sanofi','gsk','abbvie','amgen','biogen','gilead','eli lilly','boehringer','bayer','merck','novo nordisk','astellas','eisai','daiichi','otsuka'] }
+  reg: { label:'Regulatory',          tag:'tag-reg', keys:['fda','ema','regulatory','approved','approval','reject','warning letter','compliance','gmp','clinical hold','patent','exclusivity','label change'] },
+  ci:  { label:'Competitor Intel',    tag:'tag-ci',  keys:['pfizer','novartis','roche','astrazeneca','johnson & johnson','bristol-myers','bms','sanofi','gsk','abbvie','amgen','gilead','eli lilly','boehringer','bayer','merck','novo nordisk','astellas','eisai','daiichi','otsuka','argenx','jazz pharma','immunovant','spyre'] }
 };
 
-const COMPETITORS = [
-  { name:'Pfizer',               keys:['pfizer'] },
-  { name:'Novartis',             keys:['novartis'] },
-  { name:'Roche',                keys:['roche'] },
-  { name:'AstraZeneca',          keys:['astrazeneca'] },
-  { name:'Sanofi',               keys:['sanofi'] },
-  { name:'GSK',                  keys:['gsk','glaxosmithkline'] },
-  { name:'AbbVie',               keys:['abbvie'] },
-  { name:'Amgen',                keys:['amgen'] },
-  { name:'Eli Lilly',            keys:['eli lilly','lilly'] },
-  { name:'Bristol-Myers Squibb', keys:['bristol-myers','bms'] },
-  { name:'Merck',                keys:['merck','msd'] },
-  { name:'Novo Nordisk',         keys:['novo nordisk'] },
-  { name:'Bayer',                keys:['bayer'] },
-  { name:'Boehringer Ingelheim', keys:['boehringer'] }
-];
-
-function cellClass(n) {
-  if (n === 0) return 'cell-0';
-  if (n <= 1)  return 'cell-1';
-  if (n <= 3)  return 'cell-2';
-  if (n <= 6)  return 'cell-3';
-  return 'cell-4';
-}
-
-// Curated competitor intelligence seed articles — always present regardless of API status
-const SEED_CI_ARTICLES = [
-  { title:"Pfizer announces 4,000 additional job cuts in ongoing restructuring", url:"https://www.reuters.com/business/healthcare-pharmaceuticals/", desc:"Pfizer accelerates its cost-reduction program targeting $4B in annualized savings, with the latest round of layoffs hitting commercial and R&D support functions globally.", source:"Reuters", pubDate:"2026-05-26T09:00:00Z", category:"wf" },
-  { title:"Pfizer's oral GLP-1 danuglipron shows 15% weight loss in Phase 2", url:"https://www.biopharmadive.com/", desc:"Pfizer's small-molecule GLP-1 receptor agonist posted competitive efficacy data, positioning the company to enter the $100B obesity market dominated by Eli Lilly and Novo Nordisk.", source:"BioPharma Dive", pubDate:"2026-05-25T14:00:00Z", category:"rd" },
-  { title:"Novartis acquires Mariana Oncology for $1.75B to expand radioligand therapy", url:"https://www.fiercepharma.com/", desc:"The deal adds a promising radioligand therapy platform to Novartis's growing oncology arsenal, following its Lutathera and Pluvicto successes.", source:"FiercePharma", pubDate:"2026-05-24T10:30:00Z", category:"ma" },
-  { title:"Novartis names new Chief Scientific Officer from gene therapy field", url:"https://www.pharmatimes.com/", desc:"Novartis strengthened its scientific leadership by appointing a gene therapy veteran as CSO to accelerate its advanced modalities pipeline.", source:"PharmaTimes", pubDate:"2026-05-23T08:00:00Z", category:"wf" },
-  { title:"Roche wins FDA clearance for blood-based Alzheimer's detection test", url:"https://www.statnews.com/", desc:"The Elecsys amyloid plasma panel enables earlier Alzheimer's diagnosis, reinforcing Roche's leadership in diagnostics and supporting its therapeutic franchise.", source:"Stat News", pubDate:"2026-05-22T11:00:00Z", category:"reg" },
-  { title:"Roche deploys generative AI across drug discovery to cut development timelines", url:"https://www.drugdiscoverytoday.com/", desc:"Roche's new AI platform integrates large language models and protein structure prediction to identify novel targets and optimize lead candidates faster.", source:"Drug Discovery Today", pubDate:"2026-05-21T09:30:00Z", category:"ai" },
-  { title:"AstraZeneca's Tagrisso combination extends PFS in lung cancer Phase 3 trial", url:"https://www.thelancet.com/", desc:"The LAURA trial demonstrated that osimertinib plus chemotherapy significantly improved progression-free survival in EGFR-mutant non-small cell lung cancer.", source:"The Lancet", pubDate:"2026-05-20T16:00:00Z", category:"rd" },
-  { title:"AstraZeneca to invest $2.5B in Singapore biologics manufacturing hub", url:"https://www.bloomberg.com/", desc:"AstraZeneca's Singapore campus will serve as its Asia-Pacific biologics supply centre, addressing surging demand for its oncology and respiratory medicines.", source:"Bloomberg", pubDate:"2026-05-19T07:00:00Z", category:"ma" },
-  { title:"Sanofi completes Opella consumer healthcare spinoff, focuses on immunology", url:"https://www.wsj.com/", desc:"Sanofi freed up roughly €16B in capital following the Opella transaction, directing resources toward its fast-growing Dupixent franchise and inflammation pipeline.", source:"Wall Street Journal", pubDate:"2026-05-18T12:00:00Z", category:"ma" },
-  { title:"Dupixent crosses $14B annualised revenue run-rate as new indications expand", url:"https://www.evaluate.com/", desc:"Sanofi's flagship IL-4/IL-13 blocker continues its ascent, with COPD and eosinophilic esophagitis approvals adding meaningful new patient populations.", source:"Evaluate Pharma", pubDate:"2026-05-17T10:00:00Z", category:"rd" },
-  { title:"GSK closes $14B IDRx acquisition to anchor oncology strategy", url:"https://www.fiercepharma.com/", desc:"The deal gives GSK a next-generation KIT inhibitor and a broader gastrointestinal oncology franchise, signalling its commitment to cancer as a growth pillar.", source:"FiercePharma", pubDate:"2026-05-16T09:00:00Z", category:"ma" },
-  { title:"GSK cuts 400 US commercial roles after Haleon spinoff restructure", url:"https://www.reuters.com/", desc:"GSK's post-Haleon footprint rationalisation continues with US sales force reductions as it streamlines its commercial model around biopharma.", source:"Reuters", pubDate:"2026-05-15T11:00:00Z", category:"wf" },
-  { title:"AbbVie's Skyrizi overtakes Humira in quarterly revenue for first time", url:"https://www.biopharmadive.com/", desc:"With biosimilar erosion accelerating, Skyrizi generated $3.2B in Q1 2026—surpassing the legacy IL-6 inhibitor and validating AbbVie's post-Humira transition.", source:"BioPharma Dive", pubDate:"2026-05-14T13:00:00Z", category:"rd" },
-  { title:"AbbVie acquires Celsius Therapeutics to deepen immunology discovery platform", url:"https://www.endpointsnews.com/", desc:"The $350M deal adds single-cell transcriptomics capabilities, helping AbbVie identify novel targets to sustain its immunology leadership post-Humida LOE.", source:"Endpoints News", pubDate:"2026-05-13T08:30:00Z", category:"ma" },
-  { title:"Eli Lilly's tirzepatide approved for obstructive sleep apnea", url:"https://www.statnews.com/", desc:"The FDA's Zepbound approval for OSA broadens tirzepatide's addressable market well beyond diabetes and obesity, threatening ResMed and Philips Respironics.", source:"Stat News", pubDate:"2026-05-12T14:00:00Z", category:"reg" },
-  { title:"Eli Lilly commits $9B to new US manufacturing to meet GLP-1 demand", url:"https://www.cnbc.com/", desc:"Two new US sites in Indiana and North Carolina will add significant incremin and tirzepatide capacity, aiming to eliminate the multi-month supply backlog.", source:"CNBC", pubDate:"2026-05-11T10:00:00Z", category:"ma" },
-  { title:"Bristol-Myers Squibb cuts 2,200 jobs in $1.5B restructuring programme", url:"https://www.bloomberg.com/", desc:"BMS faces mounting post-Revlimid LOE pressure and is reshaping its cost base while betting on its CAR-T and cardiovascular pipeline to restore growth.", source:"Bloomberg", pubDate:"2026-05-10T09:00:00Z", category:"wf" },
-  { title:"BMS CAR-T therapy ide-cel shows 40% durable response at 24 months in myeloma", url:"https://www.nejm.org/", desc:"Long-term follow-up from the KarMMa-3 trial reinforces ide-cel's position as a meaningful option in relapsed/refractory multiple myeloma.", source:"NEJM", pubDate:"2026-05-09T16:00:00Z", category:"rd" },
-  { title:"Keytruda generates $7.4B in Q1 as Merck races to extend exclusivity", url:"https://www.evaluate.com/", desc:"Merck's PD-1 blockbuster maintains its global lead, but the company is urgently filing new indications and subcutaneous formulations ahead of the 2028 patent cliff.", source:"Evaluate Pharma", pubDate:"2026-05-08T11:00:00Z", category:"rd" },
-  { title:"Merck partners with Tempus AI to develop oncology companion diagnostics", url:"https://www.fiercebiotech.com/", desc:"The collaboration will use machine learning–based biomarker discovery to pair Keytruda and pipeline assets with predictive diagnostics.", source:"Fierce Biotech", pubDate:"2026-05-07T10:00:00Z", category:"ai" },
-  { title:"Novo Nordisk's weekly oral semaglutide 50mg shows 15% weight loss in Phase 3", url:"https://www.nejm.org/", desc:"The OASIS-2 trial result strengthens Novo Nordisk's obesity pipeline and may shift patient preference toward oral GLP-1 therapy if approved.", source:"NEJM", pubDate:"2026-05-06T09:00:00Z", category:"rd" },
-  { title:"Novo Nordisk names new US commercial president amid GLP-1 supply constraints", url:"https://www.pharmatimes.com/", desc:"The executive change comes as Novo Nordisk attempts to balance unprecedented demand with ongoing Ozempic and Wegovy manufacturing scale-up.", source:"PharmaTimes", pubDate:"2026-05-05T08:00:00Z", category:"wf" },
-  { title:"Bayer wins FDA approval for Nubeqa in hormone-sensitive prostate cancer", url:"https://www.fda.gov/", desc:"Darolutamide's expanded label positions Nubeqa to compete directly against Janssen's Zytiga and Astellas/Pfizer's Xtandi in earlier-line prostate cancer.", source:"FDA.gov", pubDate:"2026-05-04T12:00:00Z", category:"reg" },
-  { title:"Boehringer Ingelheim acquires Nerio Therapeutics for $6.5B oncology push", url:"https://www.reuters.com/", desc:"The deal marks Boehringer's most significant pivot toward oncology, adding a RAS/MAPK pathway inhibitor platform to its cardiovascular and respiratory core.", source:"Reuters", pubDate:"2026-05-03T10:00:00Z", category:"ma" },
-  { title:"Boehringer Ingelheim's zongertinib wins breakthrough therapy designation for HER2 lung cancer", url:"https://www.fiercepharma.com/", desc:"The FDA designation for zongertinib in HER2-mutant NSCLC could accelerate its approval and challenge AstraZeneca's Enhertu in this indication.", source:"Fierce Pharma", pubDate:"2026-05-02T09:00:00Z", category:"reg" },
-  { title:"Amgen's MariTide monthly injection shows superior durability vs weekly GLP-1s", url:"https://www.biopharmadive.com/", desc:"Phase 2 data for Amgen's GIP/GLP-1 dual agonist suggest monthly dosing may differentiate MariTide in a crowded obesity market.", source:"BioPharma Dive", pubDate:"2026-05-01T14:00:00Z", category:"rd" },
-  { title:"Amgen launches internal generative AI platform for protein engineering", url:"https://www.nature.com/natbiotech", desc:"Amgen's proprietary large protein language model is being deployed to design next-generation biologics with improved half-life, potency, and tolerability.", source:"Nature Biotech", pubDate:"2026-04-30T09:00:00Z", category:"ai" }
-];
-
-let allArticles = [], filtered = [], currentCat = 'all', searchTerm = '';
+let allArticles = [], currentCat = 'all', searchTerm = '';
 
 function classify(title, desc) {
   const t = (title+' '+(desc||'')).toLowerCase();
@@ -388,17 +778,12 @@ function timeAgo(s) {
   return Math.round(diff/86400)+'d ago';
 }
 
-function mentionsComp(a, comp) {
-  const t = (a.title+' '+(a.desc||'')).toLowerCase();
-  return comp.keys.some(k=>t.includes(k));
-}
-
 function renderCard(a) {
   const cat = CATS[a.category] || {label:'General',tag:'tag-gen'};
   return `<div class="article-card">
     <div class="card-top"><span class="cat-tag ${cat.tag}">${cat.label}</span><span class="card-time">${a.time}</span></div>
     <div class="card-title"><a href="${a.url}" target="_blank" rel="noopener">${a.title}</a></div>
-    ${a.desc?`<div class="card-desc">${a.desc.substring(0,160)}${a.desc.length>160?'…':''}</div>`:''}
+    ${a.desc?`<div class="card-desc">${a.desc.substring(0,155)}${a.desc.length>155?'…':''}</div>`:''}
     <div class="card-footer"><span class="src-name"><span class="src-dot"></span>${a.source}</span><a class="read-link" href="${a.url}" target="_blank" rel="noopener">Read →</a></div>
   </div>`;
 }
@@ -406,33 +791,23 @@ function renderCard(a) {
 function getFiltered() {
   let arr = allArticles;
   if(currentCat !== 'all') arr = arr.filter(a=>a.category===currentCat);
-  if(searchTerm) { const s=searchTerm.toLowerCase(); arr = arr.filter(a=>(a.title+' '+(a.desc||'')).toLowerCase().includes(s)); }
+  if(searchTerm) { const s=searchTerm.toLowerCase(); arr=arr.filter(a=>(a.title+' '+(a.desc||'')).toLowerCase().includes(s)); }
   return arr;
 }
 
 function updateCounts() {
-  const base = searchTerm ? allArticles.filter(a=>{const s=searchTerm.toLowerCase();return (a.title+' '+(a.desc||'')).toLowerCase().includes(s);}) : allArticles;
-  const all_n = base.length;
-  document.getElementById('c-all').textContent = all_n;
-  for(const cat of Object.keys(CATS)) {
-    const el = document.getElementById('c-'+cat);
-    if(el) el.textContent = base.filter(a=>a.category===cat).length;
-  }
+  const base = searchTerm ? allArticles.filter(a=>(a.title+' '+(a.desc||'')).toLowerCase().includes(searchTerm.toLowerCase())) : allArticles;
+  document.getElementById('c-all').textContent = base.length;
+  for(const cat of Object.keys(CATS)) { const el=document.getElementById('c-'+cat); if(el) el.textContent=base.filter(a=>a.category===cat).length; }
 }
 
 function renderNews() {
   const container = document.getElementById('newsContainer');
-  filtered = getFiltered();
+  const filtered = getFiltered();
   document.getElementById('resultCount').textContent = searchTerm ? `${filtered.length} result${filtered.length!==1?'s':''} for "${searchTerm}"` : '';
-
-  if(!filtered.length){
-    container.innerHTML=`<div class="empty-state"><p>${searchTerm?'No articles match your search.':'No articles found.'}</p></div>`;
-    return;
-  }
-
+  if(!filtered.length) { container.innerHTML=`<div class="empty-state"><p>${searchTerm?'No articles match your search.':'No articles found.'}</p></div>`; return; }
   if(currentCat!=='all') { container.innerHTML=`<div class="articles-grid">${filtered.map(renderCard).join('')}</div>`; return; }
-
-  const grouped = {};
+  const grouped={};
   for(const a of filtered) { if(!grouped[a.category]) grouped[a.category]=[]; grouped[a.category].push(a); }
   let html='';
   for(const [k,v] of Object.entries(CATS)) {
@@ -440,25 +815,21 @@ function renderNews() {
     if(!items.length) continue;
     html+=`<div class="cat-section"><div class="sec-head"><h2>${v.label}</h2><div class="sec-line"></div><span class="sec-count">${items.length} article${items.length>1?'s':''}</span></div><div class="articles-grid">${items.map(renderCard).join('')}</div></div>`;
   }
-  if(grouped['gen']?.length) {
-    html+=`<div class="cat-section"><div class="sec-head"><h2>Other</h2><div class="sec-line"></div><span class="sec-count">${grouped['gen'].length} articles</span></div><div class="articles-grid">${grouped['gen'].map(renderCard).join('')}</div></div>`;
-  }
+  if(grouped['gen']?.length) html+=`<div class="cat-section"><div class="sec-head"><h2>Other</h2><div class="sec-line"></div><span class="sec-count">${grouped['gen'].length} articles</span></div><div class="articles-grid">${grouped['gen'].map(renderCard).join('')}</div></div>`;
   container.innerHTML = html || `<div class="empty-state"><p>No articles found.</p></div>`;
 }
 
 function filterCat(cat, btn) {
-  currentCat = cat;
+  currentCat=cat;
   document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
   renderNews();
 }
 
 function onSearch() {
-  const val = document.getElementById('searchInput').value;
-  searchTerm = val.trim();
-  document.getElementById('searchClear').style.display = searchTerm ? 'block' : 'none';
-  updateCounts();
-  renderNews();
+  searchTerm=document.getElementById('searchInput').value.trim();
+  document.getElementById('searchClear').style.display=searchTerm?'block':'none';
+  updateCounts(); renderNews();
 }
 
 function clearSearch() {
@@ -466,114 +837,45 @@ function clearSearch() {
   searchTerm='';
   document.getElementById('searchClear').style.display='none';
   document.getElementById('resultCount').textContent='';
-  updateCounts();
-  renderNews();
-}
-
-function buildCIPage() {
-  // Volume bars
-  const compCounts = COMPETITORS.map(c=>({name:c.name, count:allArticles.filter(a=>mentionsComp(a,c)).length}))
-    .filter(c=>c.count>0).sort((a,b)=>b.count-a.count);
-  const max = compCounts[0]?.count || 1;
-  const barsHtml = compCounts.length ? compCounts.map(c=>`
-    <div class="vol-row">
-      <span class="vol-label">${c.name}</span>
-      <div class="vol-bar-wrap"><div class="vol-bar" style="width:${Math.max(8,(c.count/max*100))}%"><span>${c.count}</span></div></div>
-    </div>`).join('') : '<p style="color:var(--tm);font-size:13px">No competitor mentions found in current articles.</p>';
-  document.getElementById('volBars').innerHTML = barsHtml;
-
-  // Heatmap
-  const catKeys = Object.keys(CATS);
-  const rows = COMPETITORS.map(comp => {
-    const cells = catKeys.map(cat => {
-      const n = allArticles.filter(a=>a.category===cat && mentionsComp(a,comp)).length;
-      return { n, cat, comp };
-    });
-    const total = allArticles.filter(a=>mentionsComp(a,comp)).length;
-    return { comp, cells, total };
-  }).filter(r=>r.total>0).sort((a,b)=>b.total-a.total);
-
-  if(!rows.length) {
-    document.getElementById('heatmapBody').innerHTML='<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--tm)">No competitor data in current articles.</td></tr>';
-    return;
-  }
-
-  const tbody = rows.map(r=>`<tr>
-    <td class="comp-name">${r.comp.name}</td>
-    ${r.cells.map(c=>`<td class="${cellClass(c.n)}" onclick="showCompDetail('${r.comp.name}','${c.cat}')" title="${r.comp.name} · ${CATS[c.cat].label}: ${c.n} article${c.n!==1?'s':''}">${c.n>0?c.n:''}</td>`).join('')}
-    <td class="total-col">${r.total}</td>
-  </tr>`).join('');
-  document.getElementById('heatmapBody').innerHTML = tbody;
-}
-
-function showCompDetail(compName, cat) {
-  const comp = COMPETITORS.find(c=>c.name===compName);
-  if(!comp) return;
-  let articles = allArticles.filter(a=>mentionsComp(a,comp));
-  let title = compName;
-  if(cat) { articles = articles.filter(a=>a.category===cat); title += ' · ' + (CATS[cat]?.label||cat); }
-  if(!articles.length) return;
-  document.getElementById('compDetail').style.display='block';
-  document.getElementById('compDetailTitle').textContent = title;
-  document.getElementById('compDetailCount').textContent = `${articles.length} article${articles.length!==1?'s':''}`;
-  document.getElementById('compDetailArticles').innerHTML = articles.map(renderCard).join('');
-  document.getElementById('compDetail').scrollIntoView({behavior:'smooth',block:'start'});
+  updateCounts(); renderNews();
 }
 
 function showPage(page, btn) {
   document.querySelectorAll('.page-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('briefingPage').classList.toggle('active', page==='briefing');
-  document.getElementById('ciPage').classList.toggle('active', page==='ci');
+  document.getElementById('compBriefPage').classList.toggle('active', page==='compbrief');
   document.getElementById('mfgPage').classList.toggle('active', page==='mfg');
-  if(page==='ci') buildCIPage();
 }
 
-function mergeSeedArticles(liveArticles) {
-  const seedProcessed = SEED_CI_ARTICLES.map(a => ({...a, time: timeAgo(a.pubDate)}));
-  // Deduplicate by title in case live API already has these stories
-  const liveTitles = new Set(liveArticles.map(a => a.title.toLowerCase()));
-  const newSeeds = seedProcessed.filter(a => !liveTitles.has(a.title.toLowerCase()));
-  return [...liveArticles, ...newSeeds];
+function showBriefSec(id, btn) {
+  document.querySelectorAll('.brief-sec').forEach(s=>s.style.display='none');
+  document.querySelectorAll('.bstab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('brief-'+id).style.display='block';
+  btn.classList.add('active');
 }
 
 async function loadNews() {
   document.getElementById('newsContainer').innerHTML=`<div class="loading-state"><div class="spinner"></div><p>Fetching pharma news…</p></div>`;
   document.getElementById('statusText').textContent='Fetching…';
-  document.getElementById('dateDisplay').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-
+  document.getElementById('dateDisplay').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   try {
-    const res = await fetch('/api/feed');
-    const data = await res.json();
-    if(data.error){
-      // Fall back to seed articles only
-      allArticles = mergeSeedArticles([]);
-      updateCounts(); renderNews();
-      document.getElementById('newsContainer').insertAdjacentHTML('beforebegin',`<div class="error-state" style="margin:1rem 2rem"><strong>Live feed unavailable:</strong> ${data.error} — showing curated competitor articles.</div>`);
-      document.getElementById('statusText').textContent=`${allArticles.length} curated articles`;
-      if(document.getElementById('ciPage').classList.contains('active')) buildCIPage();
+    const res=await fetch('/api/feed');
+    const data=await res.json();
+    if(data.error) {
+      document.getElementById('newsContainer').innerHTML=`<div class="empty-state"><p>Live feed unavailable: ${data.error}</p></div>`;
+      document.getElementById('statusText').textContent='Feed unavailable';
       return;
     }
-
-    const live = (data.articles||[])
+    allArticles=(data.articles||[])
       .filter(a=>a.title&&a.url&&a.title!=='[Removed]')
       .map(a=>({title:a.title,url:a.url,desc:a.description||'',source:a.source?.name||'Unknown',pubDate:a.publishedAt,time:timeAgo(a.publishedAt),category:classify(a.title,a.description)}));
-
-    allArticles = mergeSeedArticles(live);
-
-    updateCounts();
-    renderNews();
+    updateCounts(); renderNews();
     document.getElementById('statusText').textContent=`${allArticles.length} articles loaded`;
     document.getElementById('updatedAt').textContent=`Updated ${new Date().toLocaleTimeString()}`;
-
-    if(document.getElementById('ciPage').classList.contains('active')) buildCIPage();
   } catch(e) {
-    // Network failure — still show seed articles
-    allArticles = mergeSeedArticles([]);
-    updateCounts(); renderNews();
-    document.getElementById('newsContainer').insertAdjacentHTML('beforebegin',`<div class="error-state" style="margin:1rem 2rem"><strong>Could not load live news.</strong><br>${e.message} — showing curated competitor articles.</div>`);
-    document.getElementById('statusText').textContent=`${allArticles.length} curated articles`;
-    if(document.getElementById('ciPage').classList.contains('active')) buildCIPage();
+    document.getElementById('newsContainer').innerHTML=`<div class="error-state"><strong>Could not load news.</strong> ${e.message}</div>`;
+    document.getElementById('statusText').textContent='Error';
   }
 }
 
