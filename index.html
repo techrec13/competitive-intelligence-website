@@ -427,7 +427,7 @@
 </footer>
 
 <script>
-const CORS_PROXY = 'https://api.allorigins.win/get?url=';
+const CORS_PROXY = 'https://corsproxy.io/?';
 
 const SOURCES = [
   { name: 'FiercePharma',   url: 'https://www.fiercepharma.com/rss/xml' },
@@ -501,8 +501,8 @@ function stripHtml(html) {
 async function fetchFeed(source) {
   try {
     const res = await fetch(CORS_PROXY + encodeURIComponent(source.url), { signal: AbortSignal.timeout(10000) });
-    const data = await res.json();
-    const xml = new DOMParser().parseFromString(data.contents, 'text/xml');
+    const text = await res.text();
+    const xml = new DOMParser().parseFromString(text, 'text/xml');
     const items = xml.querySelectorAll('item');
     const articles = [];
     const cutoff = Date.now() - 48 * 60 * 60 * 1000;
