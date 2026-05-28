@@ -3,261 +3,514 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pharma Talent Intel — Daily Briefing</title>
+<title>Pharma Talent Intel — Takeda</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f7f5f0; --surface: #ffffff;
-    --text-primary: #1a1a1a; --text-secondary: #5a5a5a; --text-muted: #9a9a9a;
-    --border: #e8e4dc; --accent: #1e3a5f; --accent-light: #e8eef5;
-    --tag-ma: #fff3e0; --tag-ma-text: #7c4e00;
-    --tag-workforce: #e8f5e9; --tag-workforce-text: #1b5e20;
-    --tag-rd: #e3f2fd; --tag-rd-text: #0d3b6e;
-    --tag-ai: #f3e5f5; --tag-ai-text: #4a148c;
-    --tag-regulatory: #fce4ec; --tag-regulatory-text: #880e4f;
-    --tag-competitor: #e0f7fa; --tag-competitor-text: #004d52;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; min-height: 100vh; }
-  header { background: var(--accent); color: white; padding: 2.5rem 2rem 2rem; position: relative; overflow: hidden; }
-  header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: rgba(255,255,255,0.04); }
-  .header-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-  .header-tag { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.6rem; }
-  header h1 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 600; color: white; line-height: 1.2; }
-  .header-sub { margin-top: 0.5rem; font-size: 0.95rem; color: rgba(255,255,255,0.65); font-weight: 300; }
-  .header-meta { margin-top: 1.5rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-  .date-badge { font-size: 13px; color: rgba(255,255,255,0.8); }
-  .refresh-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; padding: 6px 16px; background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; cursor: pointer; transition: background 0.2s; }
-  .refresh-btn:hover { background: rgba(255,255,255,0.2); }
-  nav { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; }
-  .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; display: flex; overflow-x: auto; scrollbar-width: none; }
-  .nav-inner::-webkit-scrollbar { display: none; }
-  .nav-tab { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; padding: 1rem 1.1rem; color: var(--text-muted); border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap; display: flex; align-items: center; gap: 6px; }
-  .nav-tab:hover { color: var(--text-primary); }
-  .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-  .nav-tab .count { font-size: 11px; background: var(--accent-light); color: var(--accent); padding: 1px 6px; border-radius: 10px; font-weight: 500; }
-  main { max-width: 1100px; margin: 0 auto; padding: 2rem; }
-  .status-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; font-size: 13px; color: var(--text-muted); }
-  .loading-state, .empty-state { text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
-  .error-state { text-align: center; padding: 3rem 2rem; color: #b00; background: #fff5f5; border-radius: 10px; font-size: 14px; }
-  .spinner { width: 32px; height: 32px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 1rem; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
-  .article-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; transition: box-shadow 0.2s, transform 0.2s; display: flex; flex-direction: column; gap: 0.6rem; }
-  .article-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateY(-1px); }
-  .card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-  .category-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 9px; border-radius: 12px; white-space: nowrap; }
-  .tag-ma         { background: var(--tag-ma);         color: var(--tag-ma-text); }
-  .tag-workforce  { background: var(--tag-workforce);  color: var(--tag-workforce-text); }
-  .tag-rd         { background: var(--tag-rd);         color: var(--tag-rd-text); }
-  .tag-ai         { background: var(--tag-ai);         color: var(--tag-ai-text); }
-  .tag-regulatory { background: var(--tag-regulatory); color: var(--tag-regulatory-text); }
-  .tag-competitor { background: var(--tag-competitor); color: var(--tag-competitor-text); }
-  .tag-general    { background: #f0ede8; color: #555; }
-  .card-time { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
-  .card-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; line-height: 1.4; color: var(--text-primary); }
-  .card-title a { color: inherit; text-decoration: none; }
-  .card-title a:hover { color: var(--accent); text-decoration: underline; }
-  .card-summary { font-size: 13px; color: var(--text-secondary); line-height: 1.55; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.6rem; border-top: 1px solid var(--border); }
-  .source-name { font-size: 12px; font-weight: 500; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
-  .source-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); opacity: 0.4; }
-  .read-link { font-size: 12px; font-weight: 500; color: var(--accent); text-decoration: none; display: flex; align-items: center; gap: 3px; opacity: 0.85; transition: opacity 0.15s; }
-  .read-link:hover { opacity: 1; }
-  .section-header { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1.25rem; }
-  .section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--text-primary); }
-  .section-divider { height: 1px; background: var(--border); flex: 1; }
-  .section-count { font-size: 12px; color: var(--text-muted); }
-  .category-section { margin-bottom: 2.5rem; }
-  footer { text-align: center; padding: 2rem; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border); margin-top: 2rem; }
+:root {
+  --red: #E1242A;
+  --red-dark: #B51C20;
+  --red-pale: #FDF2F2;
+  --red-light: #FADADA;
+  --red-mid: #F08888;
+  --bg: #F4F3F0;
+  --surface: #FFFFFF;
+  --dark: #18181A;
+  --dark2: #2C2C30;
+  --tp: #18181A;
+  --ts: #4D4B4B;
+  --tm: #8C8A8A;
+  --border: #E5E2DC;
+  --border2: #D0CCC4;
+  --tag-ma: #FFF3E0; --tag-ma-t: #7C4E00;
+  --tag-wf: #E8F5E9; --tag-wf-t: #1B5E20;
+  --tag-rd: #E3F2FD; --tag-rd-t: #0D3B6E;
+  --tag-ai: #F3E5F5; --tag-ai-t: #4A148C;
+  --tag-reg: #FCE4EC; --tag-reg-t: #880E4F;
+  --tag-ci: #E0F7FA; --tag-ci-t: #004D52;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tp);line-height:1.6;min-height:100vh}
+
+/* HEADER */
+header{background:var(--dark);color:white;padding:0}
+.header-top{padding:1.8rem 2rem 1.5rem;max-width:1200px;margin:0 auto;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:14px}
+.brand-mark{width:36px;height:36px;background:var(--red);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.brand-mark svg{width:20px;height:20px;fill:white}
+.brand-text h1{font-family:'Sora',sans-serif;font-size:1.35rem;font-weight:700;color:white;letter-spacing:-0.01em}
+.brand-text p{font-size:12px;color:rgba(255,255,255,0.45);font-weight:300;margin-top:1px}
+.header-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.date-pill{font-size:12px;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);padding:5px 12px;border-radius:20px}
+.refresh-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;padding:6px 14px;background:var(--red);color:white;border:none;border-radius:6px;cursor:pointer;transition:background 0.15s;letter-spacing:0.01em}
+.refresh-btn:hover{background:var(--red-dark)}
+
+/* PAGE TABS */
+.page-tabs{background:var(--dark2);border-bottom:1px solid rgba(255,255,255,0.06)}
+.page-tabs-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex}
+.page-tab{font-family:'Inter',sans-serif;font-size:13px;font-weight:500;padding:0.9rem 1.2rem;color:rgba(255,255,255,0.4);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;letter-spacing:0.01em}
+.page-tab:hover{color:rgba(255,255,255,0.75)}
+.page-tab.active{color:white;border-bottom-color:var(--red)}
+
+/* SEARCH BAR */
+.search-wrap{background:white;border-bottom:1px solid var(--border)}
+.search-inner{max-width:1200px;margin:0 auto;padding:1rem 2rem;display:flex;gap:12px;align-items:center}
+.search-box{flex:1;position:relative}
+.search-box input{width:100%;padding:9px 14px 9px 38px;border:1.5px solid var(--border2);border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;color:var(--tp);background:var(--bg);outline:none;transition:border 0.15s}
+.search-box input:focus{border-color:var(--red);background:white}
+.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--tm);pointer-events:none}
+.search-box input::placeholder{color:var(--tm)}
+.search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--tm);font-size:16px;display:none;line-height:1}
+.result-count{font-size:12px;color:var(--tm);white-space:nowrap}
+
+/* CATEGORY NAV */
+.cat-nav{background:var(--surface);border-bottom:1px solid var(--border)}
+.cat-nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;overflow-x:auto;scrollbar-width:none}
+.cat-nav-inner::-webkit-scrollbar{display:none}
+.cat-tab{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;padding:.85rem 1rem;color:var(--tm);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.cat-tab:hover{color:var(--tp)}
+.cat-tab.active{color:var(--red);border-bottom-color:var(--red)}
+.cat-tab .cnt{font-size:10.5px;background:var(--red-pale);color:var(--red);padding:1px 6px;border-radius:10px;font-weight:600}
+.cat-tab.active .cnt{background:var(--red);color:white}
+
+/* MAIN */
+main{max-width:1200px;margin:0 auto;padding:1.5rem 2rem}
+.status-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;font-size:12px;color:var(--tm)}
+.loading-state,.empty-state{text-align:center;padding:4rem 2rem;color:var(--tm)}
+.error-state{text-align:center;padding:2.5rem 2rem;color:#900;background:#fff5f5;border-radius:10px;font-size:14px;border:1px solid #fdd}
+.spinner{width:28px;height:28px;border:2px solid var(--border);border-top-color:var(--red);border-radius:50%;animation:spin 0.75s linear infinite;margin:0 auto 1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ARTICLES */
+.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:1rem}
+.article-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1.2rem;transition:box-shadow 0.2s,border-color 0.2s;display:flex;flex-direction:column;gap:.55rem}
+.article-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08);border-color:var(--border2)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.cat-tag{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;border-radius:4px;white-space:nowrap}
+.tag-ma{background:var(--tag-ma);color:var(--tag-ma-t)}
+.tag-wf{background:var(--tag-wf);color:var(--tag-wf-t)}
+.tag-rd{background:var(--tag-rd);color:var(--tag-rd-t)}
+.tag-ai{background:var(--tag-ai);color:var(--tag-ai-t)}
+.tag-reg{background:var(--tag-reg);color:var(--tag-reg-t)}
+.tag-ci{background:var(--tag-ci);color:var(--tag-ci-t)}
+.tag-gen{background:#F0EDE8;color:#666}
+.card-time{font-size:11px;color:var(--tm);white-space:nowrap}
+.card-title{font-family:'Sora',sans-serif;font-size:.92rem;font-weight:600;line-height:1.4;color:var(--tp)}
+.card-title a{color:inherit;text-decoration:none}
+.card-title a:hover{color:var(--red)}
+.card-desc{font-size:12.5px;color:var(--ts);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:.55rem;border-top:1px solid var(--border)}
+.src-name{font-size:11.5px;font-weight:500;color:var(--tm);display:flex;align-items:center;gap:5px}
+.src-dot{width:5px;height:5px;border-radius:50%;background:var(--red);opacity:.5}
+.read-link{font-size:11.5px;font-weight:600;color:var(--red);text-decoration:none;letter-spacing:.01em;transition:opacity .15s}
+.read-link:hover{opacity:.75}
+
+/* SECTION HEADERS */
+.sec-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.sec-head h2{font-family:'Sora',sans-serif;font-size:1.1rem;font-weight:700;color:var(--tp);white-space:nowrap}
+.sec-line{height:1px;background:var(--border);flex:1}
+.sec-count{font-size:11.5px;color:var(--tm);white-space:nowrap}
+.cat-section{margin-bottom:2.25rem}
+
+/* ========== COMPETITOR INTELLIGENCE TAB ========== */
+#ciPage{display:none}
+.ci-header{margin-bottom:1.5rem}
+.ci-header h2{font-family:'Sora',sans-serif;font-size:1.2rem;font-weight:700;color:var(--tp)}
+.ci-header p{font-size:13px;color:var(--ts);margin-top:3px}
+
+/* HEATMAP */
+.heatmap-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:2rem}
+.heatmap-title{padding:1rem 1.25rem .75rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.heatmap-title h3{font-family:'Sora',sans-serif;font-size:.95rem;font-weight:700;color:var(--tp)}
+.heatmap-legend{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--tm)}
+.legend-scale{display:flex;gap:2px;align-items:center}
+.legend-swatch{width:14px;height:14px;border-radius:2px}
+.heatmap-scroll{overflow-x:auto}
+table.heatmap{width:100%;border-collapse:collapse}
+table.heatmap th{font-size:11px;font-weight:600;color:var(--ts);padding:.6rem .5rem;text-align:center;background:var(--bg);border-bottom:1px solid var(--border);white-space:nowrap;letter-spacing:.02em}
+table.heatmap th.comp-col{text-align:left;padding-left:1.25rem;min-width:160px}
+table.heatmap td{padding:.45rem .5rem;text-align:center;border-bottom:1px solid var(--border);font-size:12px;font-weight:500;cursor:pointer;transition:opacity .15s;position:relative}
+table.heatmap td:hover{opacity:.75}
+table.heatmap td.comp-name{text-align:left;padding-left:1.25rem;font-size:12.5px;font-weight:600;color:var(--tp);cursor:default;background:white!important}
+table.heatmap td.comp-name:hover{opacity:1}
+table.heatmap td.total-col{font-weight:700;background:var(--bg)!important;color:var(--tp);cursor:default}
+table.heatmap td.total-col:hover{opacity:1}
+table.heatmap tr:last-child td{border-bottom:none}
+.cell-0{background:#F8F7F5;color:var(--tm)}
+.cell-1{background:#FDE8E8;color:#9B1C1C}
+.cell-2{background:#FAC5C5;color:#7B1414}
+.cell-3{background:#F58484;color:#fff}
+.cell-4{background:#E1242A;color:#fff}
+
+/* COMPETITOR DETAIL */
+.comp-detail{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.comp-detail-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.comp-detail-header h3{font-family:'Sora',sans-serif;font-size:.95rem;font-weight:700;color:var(--tp)}
+.comp-detail-header span{font-size:12px;color:var(--tm)}
+.comp-detail-body{padding:1.25rem}
+.comp-articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.85rem}
+
+/* OVERALL VOLUME BAR */
+.vol-section{margin-bottom:2rem}
+.vol-section h3{font-family:'Sora',sans-serif;font-size:.95rem;font-weight:700;color:var(--tp);margin-bottom:.85rem}
+.vol-bars{display:flex;flex-direction:column;gap:.45rem}
+.vol-row{display:flex;align-items:center;gap:.75rem}
+.vol-label{font-size:12px;font-weight:600;color:var(--tp);width:140px;flex-shrink:0;text-align:right}
+.vol-bar-wrap{flex:1;background:var(--bg);border-radius:4px;height:22px;overflow:hidden}
+.vol-bar{height:100%;background:var(--red);border-radius:4px;transition:width .5s ease;display:flex;align-items:center;padding:0 8px;min-width:30px}
+.vol-bar span{font-size:11px;font-weight:600;color:white}
+
+/* HIDDEN */
+.page{display:none}
+.page.active{display:block}
+
+footer{text-align:center;padding:1.75rem 2rem;font-size:11.5px;color:var(--tm);border-top:1px solid var(--border);margin-top:2rem;background:white}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-inner">
-    <div class="header-tag">Talent Intelligence · Pharma & Biotech</div>
-    <h1>Pharma Talent Intel</h1>
-    <div class="header-sub">Yesterday's industry news — workforce lens</div>
-    <div class="header-meta">
-      <span class="date-badge" id="dateDisplay">—</span>
+  <div class="header-top">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L4 7v5c0 5.25 3.4 10.15 8 11.5C16.6 22.15 20 17.25 20 12V7L12 2z"/></svg>
+      </div>
+      <div class="brand-text">
+        <h1>Pharma Talent Intel</h1>
+        <p>Takeda · Talent Acquisition & Competitive Intelligence</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <span class="date-pill" id="dateDisplay">—</span>
       <button class="refresh-btn" onclick="loadNews()">↻ Refresh</button>
     </div>
   </div>
 </header>
 
-<nav>
-  <div class="nav-inner">
-    <button class="nav-tab active" data-cat="all" onclick="filterCat('all', this)">All <span class="count" id="count-all">0</span></button>
-    <button class="nav-tab" data-cat="workforce" onclick="filterCat('workforce', this)">Workforce &amp; Talent <span class="count" id="count-workforce">0</span></button>
-    <button class="nav-tab" data-cat="ma" onclick="filterCat('ma', this)">M&amp;A &amp; Restructuring <span class="count" id="count-ma">0</span></button>
-    <button class="nav-tab" data-cat="rd" onclick="filterCat('rd', this)">R&amp;D Pipeline <span class="count" id="count-rd">0</span></button>
-    <button class="nav-tab" data-cat="ai" onclick="filterCat('ai', this)">AI in Pharma <span class="count" id="count-ai">0</span></button>
-    <button class="nav-tab" data-cat="regulatory" onclick="filterCat('regulatory', this)">Regulatory <span class="count" id="count-regulatory">0</span></button>
-    <button class="nav-tab" data-cat="competitor" onclick="filterCat('competitor', this)">Competitor Intel <span class="count" id="count-competitor">0</span></button>
+<div class="page-tabs">
+  <div class="page-tabs-inner">
+    <button class="page-tab active" onclick="showPage('briefing',this)">Daily Briefing</button>
+    <button class="page-tab" onclick="showPage('ci',this)">Competitor Intelligence</button>
   </div>
-</nav>
+</div>
 
-<main>
-  <div class="status-bar">
-    <span id="statusText">Loading news…</span>
-    <span id="articleCount"></span>
+<!-- DAILY BRIEFING PAGE -->
+<div id="briefingPage" class="page active">
+  <div class="search-wrap">
+    <div class="search-inner">
+      <div class="search-box">
+        <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" placeholder="Search articles by keyword…" oninput="onSearch()" />
+        <button class="search-clear" id="searchClear" onclick="clearSearch()">×</button>
+      </div>
+      <span class="result-count" id="resultCount"></span>
+    </div>
   </div>
-  <div id="newsContainer">
-    <div class="loading-state"><div class="spinner"></div><p>Fetching pharma news…</p></div>
+
+  <div class="cat-nav">
+    <div class="cat-nav-inner">
+      <button class="cat-tab active" data-cat="all" onclick="filterCat('all',this)">All <span class="cnt" id="c-all">0</span></button>
+      <button class="cat-tab" data-cat="wf" onclick="filterCat('wf',this)">Workforce &amp; Talent <span class="cnt" id="c-wf">0</span></button>
+      <button class="cat-tab" data-cat="ma" onclick="filterCat('ma',this)">M&amp;A &amp; Restructuring <span class="cnt" id="c-ma">0</span></button>
+      <button class="cat-tab" data-cat="rd" onclick="filterCat('rd',this)">R&amp;D Pipeline <span class="cnt" id="c-rd">0</span></button>
+      <button class="cat-tab" data-cat="ai" onclick="filterCat('ai',this)">AI in Pharma <span class="cnt" id="c-ai">0</span></button>
+      <button class="cat-tab" data-cat="reg" onclick="filterCat('reg',this)">Regulatory <span class="cnt" id="c-reg">0</span></button>
+      <button class="cat-tab" data-cat="ci" onclick="filterCat('ci',this)">Competitor Intel <span class="cnt" id="c-ci">0</span></button>
+    </div>
   </div>
-</main>
+
+  <main>
+    <div class="status-bar">
+      <span id="statusText">Loading news…</span>
+      <span id="updatedAt"></span>
+    </div>
+    <div id="newsContainer">
+      <div class="loading-state"><div class="spinner"></div><p>Fetching pharma news…</p></div>
+    </div>
+  </main>
+</div>
+
+<!-- COMPETITOR INTELLIGENCE PAGE -->
+<div id="ciPage" class="page">
+  <main>
+    <div class="ci-header" style="margin-top:.5rem">
+      <h2>Competitor Intelligence Radar</h2>
+      <p>News density by competitor and category — based on articles from the last 48 hours. Click a cell to explore those articles.</p>
+    </div>
+
+    <div class="vol-section">
+      <h3>Overall mention volume</h3>
+      <div class="vol-bars" id="volBars"><div class="loading-state" style="padding:1rem"><div class="spinner"></div></div></div>
+    </div>
+
+    <div class="heatmap-wrap">
+      <div class="heatmap-title">
+        <h3>Category × Competitor heatmap</h3>
+        <div class="heatmap-legend">
+          <span>Low</span>
+          <div class="legend-scale">
+            <div class="legend-swatch" style="background:#FDE8E8"></div>
+            <div class="legend-swatch" style="background:#FAC5C5"></div>
+            <div class="legend-swatch" style="background:#F58484"></div>
+            <div class="legend-swatch" style="background:#E1242A"></div>
+          </div>
+          <span>High</span>
+        </div>
+      </div>
+      <div class="heatmap-scroll">
+        <table class="heatmap" id="heatmapTable">
+          <thead><tr>
+            <th class="comp-col">Competitor</th>
+            <th>Workforce &amp; Talent</th>
+            <th>M&amp;A</th>
+            <th>R&amp;D Pipeline</th>
+            <th>AI in Pharma</th>
+            <th>Regulatory</th>
+            <th>Competitor Intel</th>
+            <th>Total</th>
+          </tr></thead>
+          <tbody id="heatmapBody">
+            <tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--tm)">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="comp-detail" id="compDetail" style="display:none">
+      <div class="comp-detail-header">
+        <h3 id="compDetailTitle">—</h3>
+        <span id="compDetailCount">—</span>
+      </div>
+      <div class="comp-detail-body">
+        <div class="comp-articles-grid" id="compDetailArticles"></div>
+      </div>
+    </div>
+  </main>
+</div>
 
 <footer>
-  Pharma Talent Intel · Powered by NewsAPI · Built for Takeda TA &amp; CI teams
+  Pharma Talent Intel &nbsp;·&nbsp; Powered by NewsAPI &nbsp;·&nbsp; Built for Takeda TA &amp; CI teams
 </footer>
 
 <script>
-const CATEGORIES = {
-  workforce: {
-    label: 'Workforce & Talent', tagClass: 'tag-workforce',
-    keywords: ['layoff','layoffs','redundan','headcount','hiring','talent','workforce','employees','staff','job cuts','reorgani','ceo','cfo','coo','appoint','named','joins','departure','resign','executive','leadership','human resources','talent acquisition','recrui','reductions','downsiz']
-  },
-  ma: {
-    label: 'M&A & Restructuring', tagClass: 'tag-ma',
-    keywords: ['acqui','merger','deal','divest','spin-off','spinoff','buyout','takeover','bid','transaction','closing','purchase','consolidat','site closure','plant closure']
-  },
-  rd: {
-    label: 'R&D Pipeline', tagClass: 'tag-rd',
-    keywords: ['phase 1','phase 2','phase 3','phase i','phase ii','phase iii','clinical trial','pipeline','drug candidate','therapy','treatment','biologic','indication','compound','molecule','efficacy','safety','endpoint','data readout']
-  },
-  ai: {
-    label: 'AI in Pharma', tagClass: 'tag-ai',
-    keywords: ['artificial intelligence','machine learning','deep learning','generative ai','large language','llm','automation','algorithm','digital health','digital transform','data science','predictive model']
-  },
-  regulatory: {
-    label: 'Regulatory', tagClass: 'tag-regulatory',
-    keywords: ['fda','ema','regulatory','regulation','approved','approval','reject','warning letter','compliance','inspection','gmp','clinical hold','patent','exclusivity','label change']
-  },
-  competitor: {
-    label: 'Competitor Intel', tagClass: 'tag-competitor',
-    keywords: ['pfizer','novartis','roche','astrazeneca','johnson & johnson','bristol-myers','bms','sanofi','gsk','abbvie','amgen','biogen','gilead','eli lilly','boehringer','bayer','merck','novo nordisk','astellas','eisai','daiichi','otsuka']
-  }
+const CATS = {
+  wf:  { label:'Workforce & Talent',  tag:'tag-wf',  keys:['layoff','layoffs','redundan','headcount','hiring','talent','workforce','employees','staff','job cuts','reorgani','ceo','cfo','coo','appoint','named','joins','departure','resign','executive','leadership','human resources','talent acquisition','recrui','downsiz','reductions'] },
+  ma:  { label:'M&A & Restructuring', tag:'tag-ma',  keys:['acqui','merger','deal','divest','spin-off','spinoff','buyout','takeover','bid','transaction','closing','purchase','consolidat','site closure','plant closure'] },
+  rd:  { label:'R&D Pipeline',        tag:'tag-rd',  keys:['phase 1','phase 2','phase 3','phase i','phase ii','phase iii','clinical trial','pipeline','drug candidate','therapy','treatment','biologic','indication','compound','molecule','efficacy','safety','endpoint','data readout'] },
+  ai:  { label:'AI in Pharma',        tag:'tag-ai',  keys:['artificial intelligence','machine learning','deep learning','generative ai','large language','llm','automation','algorithm','digital health','digital transform','data science','predictive'] },
+  reg: { label:'Regulatory',          tag:'tag-reg', keys:['fda','ema','regulatory','regulation','approved','approval','reject','warning letter','compliance','inspection','gmp','clinical hold','patent','exclusivity','label change'] },
+  ci:  { label:'Competitor Intel',    tag:'tag-ci',  keys:['pfizer','novartis','roche','astrazeneca','johnson & johnson','bristol-myers','bms','sanofi','gsk','abbvie','amgen','biogen','gilead','eli lilly','boehringer','bayer','merck','novo nordisk','astellas','eisai','daiichi','otsuka'] }
 };
 
-let allArticles = [], currentCat = 'all';
+const COMPETITORS = [
+  { name:'Pfizer',               keys:['pfizer'] },
+  { name:'Novartis',             keys:['novartis'] },
+  { name:'Roche',                keys:['roche'] },
+  { name:'AstraZeneca',          keys:['astrazeneca'] },
+  { name:'Sanofi',               keys:['sanofi'] },
+  { name:'GSK',                  keys:['gsk','glaxosmithkline'] },
+  { name:'AbbVie',               keys:['abbvie'] },
+  { name:'Amgen',                keys:['amgen'] },
+  { name:'Eli Lilly',            keys:['eli lilly','lilly'] },
+  { name:'Bristol-Myers Squibb', keys:['bristol-myers','bms'] },
+  { name:'Merck',                keys:['merck','msd'] },
+  { name:'Novo Nordisk',         keys:['novo nordisk'] },
+  { name:'Bayer',                keys:['bayer'] },
+  { name:'Boehringer Ingelheim', keys:['boehringer'] }
+];
 
-function classify(title, desc) {
-  const text = (title + ' ' + (desc || '')).toLowerCase();
-  const scores = {};
-  for (const [cat, data] of Object.entries(CATEGORIES)) {
-    scores[cat] = data.keywords.filter(kw => text.includes(kw)).length;
-  }
-  const best = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
-  return best && best[1] > 0 ? best[0] : 'general';
+function cellClass(n) {
+  if (n === 0) return 'cell-0';
+  if (n <= 1)  return 'cell-1';
+  if (n <= 3)  return 'cell-2';
+  if (n <= 6)  return 'cell-3';
+  return 'cell-4';
 }
 
-function timeAgo(dateStr) {
-  const d = new Date(dateStr);
-  if (isNaN(d)) return '';
-  const diff = (Date.now() - d) / 1000;
-  if (diff < 3600) return Math.round(diff/60) + 'm ago';
-  if (diff < 86400) return Math.round(diff/3600) + 'h ago';
-  return Math.round(diff/86400) + 'd ago';
+let allArticles = [], filtered = [], currentCat = 'all', searchTerm = '';
+
+function classify(title, desc) {
+  const t = (title+' '+(desc||'')).toLowerCase();
+  const scores = {};
+  for (const [k,v] of Object.entries(CATS)) scores[k] = v.keys.filter(kw=>t.includes(kw)).length;
+  const best = Object.entries(scores).sort((a,b)=>b[1]-a[1])[0];
+  return best && best[1]>0 ? best[0] : 'gen';
+}
+
+function timeAgo(s) {
+  const d = new Date(s); if(isNaN(d)) return '';
+  const diff = (Date.now()-d)/1000;
+  if(diff<3600) return Math.round(diff/60)+'m ago';
+  if(diff<86400) return Math.round(diff/3600)+'h ago';
+  return Math.round(diff/86400)+'d ago';
+}
+
+function mentionsComp(a, comp) {
+  const t = (a.title+' '+(a.desc||'')).toLowerCase();
+  return comp.keys.some(k=>t.includes(k));
 }
 
 function renderCard(a) {
-  const cat = CATEGORIES[a.category] || { label: 'General', tagClass: 'tag-general' };
-  return `<div class="article-card" data-cat="${a.category}">
-    <div class="card-top">
-      <span class="category-tag ${cat.tagClass}">${cat.label}</span>
-      <span class="card-time">${a.time}</span>
-    </div>
+  const cat = CATS[a.category] || {label:'General',tag:'tag-gen'};
+  return `<div class="article-card">
+    <div class="card-top"><span class="cat-tag ${cat.tag}">${cat.label}</span><span class="card-time">${a.time}</span></div>
     <div class="card-title"><a href="${a.url}" target="_blank" rel="noopener">${a.title}</a></div>
-    ${a.desc ? `<div class="card-summary">${a.desc.substring(0,200)}${a.desc.length>200?'…':''}</div>` : ''}
-    <div class="card-footer">
-      <span class="source-name"><span class="source-dot"></span>${a.source}</span>
-      <a class="read-link" href="${a.url}" target="_blank" rel="noopener">Read →</a>
-    </div>
+    ${a.desc?`<div class="card-desc">${a.desc.substring(0,160)}${a.desc.length>160?'…':''}</div>`:''}
+    <div class="card-footer"><span class="src-name"><span class="src-dot"></span>${a.source}</span><a class="read-link" href="${a.url}" target="_blank" rel="noopener">Read →</a></div>
   </div>`;
 }
 
-function updateCounts(articles) {
-  const counts = { all: articles.length };
-  for (const cat of Object.keys(CATEGORIES)) counts[cat] = articles.filter(a => a.category === cat).length;
-  for (const [cat, n] of Object.entries(counts)) { const el = document.getElementById('count-'+cat); if(el) el.textContent = n; }
+function getFiltered() {
+  let arr = allArticles;
+  if(currentCat !== 'all') arr = arr.filter(a=>a.category===currentCat);
+  if(searchTerm) { const s=searchTerm.toLowerCase(); arr = arr.filter(a=>(a.title+' '+(a.desc||'')).toLowerCase().includes(s)); }
+  return arr;
 }
 
-function renderAll(articles, cat) {
+function updateCounts() {
+  const base = searchTerm ? allArticles.filter(a=>{const s=searchTerm.toLowerCase();return (a.title+' '+(a.desc||'')).toLowerCase().includes(s);}) : allArticles;
+  const all_n = base.length;
+  document.getElementById('c-all').textContent = all_n;
+  for(const cat of Object.keys(CATS)) {
+    const el = document.getElementById('c-'+cat);
+    if(el) el.textContent = base.filter(a=>a.category===cat).length;
+  }
+}
+
+function renderNews() {
   const container = document.getElementById('newsContainer');
-  const filtered = cat === 'all' ? articles : articles.filter(a => a.category === cat);
-  if (!filtered.length) { container.innerHTML = `<div class="empty-state"><p>No articles found for this category.</p></div>`; return; }
-  if (cat !== 'all') { container.innerHTML = `<div class="articles-grid">${filtered.map(renderCard).join('')}</div>`; return; }
+  filtered = getFiltered();
+  document.getElementById('resultCount').textContent = searchTerm ? `${filtered.length} result${filtered.length!==1?'s':''} for "${searchTerm}"` : '';
+
+  if(!filtered.length){
+    container.innerHTML=`<div class="empty-state"><p>${searchTerm?'No articles match your search.':'No articles found.'}</p></div>`;
+    return;
+  }
+
+  if(currentCat!=='all') { container.innerHTML=`<div class="articles-grid">${filtered.map(renderCard).join('')}</div>`; return; }
+
   const grouped = {};
-  for (const a of articles) { if (!grouped[a.category]) grouped[a.category] = []; grouped[a.category].push(a); }
-  let html = '';
-  for (const [catKey, catData] of Object.entries(CATEGORIES)) {
-    const items = grouped[catKey] || [];
-    if (!items.length) continue;
-    html += `<div class="category-section">
-      <div class="section-header"><h2>${catData.label}</h2><div class="section-divider"></div><span class="section-count">${items.length} article${items.length>1?'s':''}</span></div>
-      <div class="articles-grid">${items.map(renderCard).join('')}</div>
-    </div>`;
+  for(const a of filtered) { if(!grouped[a.category]) grouped[a.category]=[]; grouped[a.category].push(a); }
+  let html='';
+  for(const [k,v] of Object.entries(CATS)) {
+    const items=grouped[k]||[];
+    if(!items.length) continue;
+    html+=`<div class="cat-section"><div class="sec-head"><h2>${v.label}</h2><div class="sec-line"></div><span class="sec-count">${items.length} article${items.length>1?'s':''}</span></div><div class="articles-grid">${items.map(renderCard).join('')}</div></div>`;
   }
-  if (grouped['general']?.length) {
-    html += `<div class="category-section">
-      <div class="section-header"><h2>Other</h2><div class="section-divider"></div><span class="section-count">${grouped['general'].length} articles</span></div>
-      <div class="articles-grid">${grouped['general'].map(renderCard).join('')}</div>
-    </div>`;
+  if(grouped['gen']?.length) {
+    html+=`<div class="cat-section"><div class="sec-head"><h2>Other</h2><div class="sec-line"></div><span class="sec-count">${grouped['gen'].length} articles</span></div><div class="articles-grid">${grouped['gen'].map(renderCard).join('')}</div></div>`;
   }
-  container.innerHTML = html || `<div class="empty-state"><p>No recent articles found.</p></div>`;
+  container.innerHTML = html || `<div class="empty-state"><p>No articles found.</p></div>`;
 }
 
 function filterCat(cat, btn) {
   currentCat = cat;
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
-  renderAll(allArticles, cat);
+  renderNews();
+}
+
+function onSearch() {
+  const val = document.getElementById('searchInput').value;
+  searchTerm = val.trim();
+  document.getElementById('searchClear').style.display = searchTerm ? 'block' : 'none';
+  updateCounts();
+  renderNews();
+}
+
+function clearSearch() {
+  document.getElementById('searchInput').value='';
+  searchTerm='';
+  document.getElementById('searchClear').style.display='none';
+  document.getElementById('resultCount').textContent='';
+  updateCounts();
+  renderNews();
+}
+
+function buildCIPage() {
+  // Volume bars
+  const compCounts = COMPETITORS.map(c=>({name:c.name, count:allArticles.filter(a=>mentionsComp(a,c)).length}))
+    .filter(c=>c.count>0).sort((a,b)=>b.count-a.count);
+  const max = compCounts[0]?.count || 1;
+  const barsHtml = compCounts.length ? compCounts.map(c=>`
+    <div class="vol-row">
+      <span class="vol-label">${c.name}</span>
+      <div class="vol-bar-wrap"><div class="vol-bar" style="width:${Math.max(8,(c.count/max*100))}%"><span>${c.count}</span></div></div>
+    </div>`).join('') : '<p style="color:var(--tm);font-size:13px">No competitor mentions found in current articles.</p>';
+  document.getElementById('volBars').innerHTML = barsHtml;
+
+  // Heatmap
+  const catKeys = Object.keys(CATS);
+  const rows = COMPETITORS.map(comp => {
+    const cells = catKeys.map(cat => {
+      const n = allArticles.filter(a=>a.category===cat && mentionsComp(a,comp)).length;
+      return { n, cat, comp };
+    });
+    const total = allArticles.filter(a=>mentionsComp(a,comp)).length;
+    return { comp, cells, total };
+  }).filter(r=>r.total>0).sort((a,b)=>b.total-a.total);
+
+  if(!rows.length) {
+    document.getElementById('heatmapBody').innerHTML='<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--tm)">No competitor data in current articles.</td></tr>';
+    return;
+  }
+
+  const tbody = rows.map(r=>`<tr>
+    <td class="comp-name">${r.comp.name}</td>
+    ${r.cells.map(c=>`<td class="${cellClass(c.n)}" onclick="showCompDetail('${r.comp.name}','${c.cat}')" title="${r.comp.name} · ${CATS[c.cat].label}: ${c.n} article${c.n!==1?'s':''}">${c.n>0?c.n:''}</td>`).join('')}
+    <td class="total-col">${r.total}</td>
+  </tr>`).join('');
+  document.getElementById('heatmapBody').innerHTML = tbody;
+}
+
+function showCompDetail(compName, cat) {
+  const comp = COMPETITORS.find(c=>c.name===compName);
+  if(!comp) return;
+  let articles = allArticles.filter(a=>mentionsComp(a,comp));
+  let title = compName;
+  if(cat) { articles = articles.filter(a=>a.category===cat); title += ' · ' + (CATS[cat]?.label||cat); }
+  if(!articles.length) return;
+  document.getElementById('compDetail').style.display='block';
+  document.getElementById('compDetailTitle').textContent = title;
+  document.getElementById('compDetailCount').textContent = `${articles.length} article${articles.length!==1?'s':''}`;
+  document.getElementById('compDetailArticles').innerHTML = articles.map(renderCard).join('');
+  document.getElementById('compDetail').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function showPage(page, btn) {
+  document.querySelectorAll('.page-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('briefingPage').classList.toggle('active', page==='briefing');
+  document.getElementById('ciPage').classList.toggle('active', page==='ci');
+  if(page==='ci') buildCIPage();
 }
 
 async function loadNews() {
-  document.getElementById('newsContainer').innerHTML = `<div class="loading-state"><div class="spinner"></div><p>Fetching pharma news…</p></div>`;
-  document.getElementById('statusText').textContent = 'Fetching…';
-  document.getElementById('dateDisplay').textContent = new Date().toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  document.getElementById('newsContainer').innerHTML=`<div class="loading-state"><div class="spinner"></div><p>Fetching pharma news…</p></div>`;
+  document.getElementById('statusText').textContent='Fetching…';
+  document.getElementById('dateDisplay').textContent = new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
   try {
     const res = await fetch('/api/feed');
     const data = await res.json();
-
-    if (data.error) {
-      document.getElementById('newsContainer').innerHTML = `<div class="error-state"><strong>Configuration error:</strong> ${data.error}</div>`;
-      document.getElementById('statusText').textContent = 'Error';
-      return;
-    }
-
-    if (!data.articles || data.articles.length === 0) {
-      document.getElementById('newsContainer').innerHTML = `<div class="empty-state"><p>No articles found for yesterday. Try refreshing later.</p></div>`;
-      document.getElementById('statusText').textContent = 'No articles found';
-      return;
-    }
+    if(data.error){ document.getElementById('newsContainer').innerHTML=`<div class="error-state"><strong>Error:</strong> ${data.error}</div>`; document.getElementById('statusText').textContent='Error'; return; }
+    if(!data.articles?.length){ document.getElementById('newsContainer').innerHTML=`<div class="empty-state"><p>No articles found. Try refreshing.</p></div>`; document.getElementById('statusText').textContent='No articles'; return; }
 
     allArticles = data.articles
-      .filter(a => a.title && a.url && a.title !== '[Removed]')
-      .map(a => ({
-        title: a.title,
-        url: a.url,
-        desc: a.description || '',
-        source: a.source?.name || 'Unknown',
-        pubDate: a.publishedAt,
-        time: timeAgo(a.publishedAt),
-        category: classify(a.title, a.description)
-      }));
+      .filter(a=>a.title&&a.url&&a.title!=='[Removed]')
+      .map(a=>({title:a.title,url:a.url,desc:a.description||'',source:a.source?.name||'Unknown',pubDate:a.publishedAt,time:timeAgo(a.publishedAt),category:classify(a.title,a.description)}));
 
-    updateCounts(allArticles);
-    renderAll(allArticles, currentCat);
-    document.getElementById('statusText').textContent = `${allArticles.length} articles loaded`;
-    document.getElementById('articleCount').textContent = `Updated ${new Date().toLocaleTimeString()}`;
+    updateCounts();
+    renderNews();
+    document.getElementById('statusText').textContent=`${allArticles.length} articles loaded`;
+    document.getElementById('updatedAt').textContent=`Updated ${new Date().toLocaleTimeString()}`;
 
+    // Refresh CI if visible
+    if(document.getElementById('ciPage').classList.contains('active')) buildCIPage();
   } catch(e) {
-    document.getElementById('newsContainer').innerHTML = `<div class="error-state"><strong>Could not load news.</strong><br>${e.message}</div>`;
-    document.getElementById('statusText').textContent = 'Error loading news';
+    document.getElementById('newsContainer').innerHTML=`<div class="error-state"><strong>Could not load news.</strong><br>${e.message}</div>`;
+    document.getElementById('statusText').textContent='Error';
   }
 }
 
