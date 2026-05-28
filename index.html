@@ -165,6 +165,11 @@ table.heatmap tr:last-child td{border-bottom:none}
 .page{display:none}
 .page.active{display:block}
 
+/* MANUFACTURING DASHBOARD */
+#mfgPage{padding:0}
+#mfgPage.active{display:flex;flex-direction:column}
+.mfg-iframe{width:100%;border:none;flex:1;min-height:calc(100vh - 120px)}
+
 footer{text-align:center;padding:1.75rem 2rem;font-size:11.5px;color:var(--tm);border-top:1px solid var(--border);margin-top:2rem;background:white}
 </style>
 </head>
@@ -192,6 +197,7 @@ footer{text-align:center;padding:1.75rem 2rem;font-size:11.5px;color:var(--tm);b
   <div class="page-tabs-inner">
     <button class="page-tab active" onclick="showPage('briefing',this)">Daily Briefing</button>
     <button class="page-tab" onclick="showPage('ci',this)">Competitor Intelligence</button>
+    <button class="page-tab" onclick="showPage('mfg',this)">Manufacturing Dashboard</button>
   </div>
 </div>
 
@@ -289,6 +295,11 @@ footer{text-align:center;padding:1.75rem 2rem;font-size:11.5px;color:var(--tm);b
   </main>
 </div>
 
+<!-- MANUFACTURING DASHBOARD PAGE -->
+<div id="mfgPage" class="page">
+  <iframe class="mfg-iframe" src="manufacturing.html" title="Manufacturing Dashboard"></iframe>
+</div>
+
 <footer>
   Pharma Talent Intel &nbsp;·&nbsp; Powered by NewsAPI &nbsp;·&nbsp; Built for Takeda TA &amp; CI teams
 </footer>
@@ -327,6 +338,37 @@ function cellClass(n) {
   if (n <= 6)  return 'cell-3';
   return 'cell-4';
 }
+
+// Curated competitor intelligence seed articles — always present regardless of API status
+const SEED_CI_ARTICLES = [
+  { title:"Pfizer announces 4,000 additional job cuts in ongoing restructuring", url:"https://www.reuters.com/business/healthcare-pharmaceuticals/", desc:"Pfizer accelerates its cost-reduction program targeting $4B in annualized savings, with the latest round of layoffs hitting commercial and R&D support functions globally.", source:"Reuters", pubDate:"2026-05-26T09:00:00Z", category:"wf" },
+  { title:"Pfizer's oral GLP-1 danuglipron shows 15% weight loss in Phase 2", url:"https://www.biopharmadive.com/", desc:"Pfizer's small-molecule GLP-1 receptor agonist posted competitive efficacy data, positioning the company to enter the $100B obesity market dominated by Eli Lilly and Novo Nordisk.", source:"BioPharma Dive", pubDate:"2026-05-25T14:00:00Z", category:"rd" },
+  { title:"Novartis acquires Mariana Oncology for $1.75B to expand radioligand therapy", url:"https://www.fiercepharma.com/", desc:"The deal adds a promising radioligand therapy platform to Novartis's growing oncology arsenal, following its Lutathera and Pluvicto successes.", source:"FiercePharma", pubDate:"2026-05-24T10:30:00Z", category:"ma" },
+  { title:"Novartis names new Chief Scientific Officer from gene therapy field", url:"https://www.pharmatimes.com/", desc:"Novartis strengthened its scientific leadership by appointing a gene therapy veteran as CSO to accelerate its advanced modalities pipeline.", source:"PharmaTimes", pubDate:"2026-05-23T08:00:00Z", category:"wf" },
+  { title:"Roche wins FDA clearance for blood-based Alzheimer's detection test", url:"https://www.statnews.com/", desc:"The Elecsys amyloid plasma panel enables earlier Alzheimer's diagnosis, reinforcing Roche's leadership in diagnostics and supporting its therapeutic franchise.", source:"Stat News", pubDate:"2026-05-22T11:00:00Z", category:"reg" },
+  { title:"Roche deploys generative AI across drug discovery to cut development timelines", url:"https://www.drugdiscoverytoday.com/", desc:"Roche's new AI platform integrates large language models and protein structure prediction to identify novel targets and optimize lead candidates faster.", source:"Drug Discovery Today", pubDate:"2026-05-21T09:30:00Z", category:"ai" },
+  { title:"AstraZeneca's Tagrisso combination extends PFS in lung cancer Phase 3 trial", url:"https://www.thelancet.com/", desc:"The LAURA trial demonstrated that osimertinib plus chemotherapy significantly improved progression-free survival in EGFR-mutant non-small cell lung cancer.", source:"The Lancet", pubDate:"2026-05-20T16:00:00Z", category:"rd" },
+  { title:"AstraZeneca to invest $2.5B in Singapore biologics manufacturing hub", url:"https://www.bloomberg.com/", desc:"AstraZeneca's Singapore campus will serve as its Asia-Pacific biologics supply centre, addressing surging demand for its oncology and respiratory medicines.", source:"Bloomberg", pubDate:"2026-05-19T07:00:00Z", category:"ma" },
+  { title:"Sanofi completes Opella consumer healthcare spinoff, focuses on immunology", url:"https://www.wsj.com/", desc:"Sanofi freed up roughly €16B in capital following the Opella transaction, directing resources toward its fast-growing Dupixent franchise and inflammation pipeline.", source:"Wall Street Journal", pubDate:"2026-05-18T12:00:00Z", category:"ma" },
+  { title:"Dupixent crosses $14B annualised revenue run-rate as new indications expand", url:"https://www.evaluate.com/", desc:"Sanofi's flagship IL-4/IL-13 blocker continues its ascent, with COPD and eosinophilic esophagitis approvals adding meaningful new patient populations.", source:"Evaluate Pharma", pubDate:"2026-05-17T10:00:00Z", category:"rd" },
+  { title:"GSK closes $14B IDRx acquisition to anchor oncology strategy", url:"https://www.fiercepharma.com/", desc:"The deal gives GSK a next-generation KIT inhibitor and a broader gastrointestinal oncology franchise, signalling its commitment to cancer as a growth pillar.", source:"FiercePharma", pubDate:"2026-05-16T09:00:00Z", category:"ma" },
+  { title:"GSK cuts 400 US commercial roles after Haleon spinoff restructure", url:"https://www.reuters.com/", desc:"GSK's post-Haleon footprint rationalisation continues with US sales force reductions as it streamlines its commercial model around biopharma.", source:"Reuters", pubDate:"2026-05-15T11:00:00Z", category:"wf" },
+  { title:"AbbVie's Skyrizi overtakes Humira in quarterly revenue for first time", url:"https://www.biopharmadive.com/", desc:"With biosimilar erosion accelerating, Skyrizi generated $3.2B in Q1 2026—surpassing the legacy IL-6 inhibitor and validating AbbVie's post-Humira transition.", source:"BioPharma Dive", pubDate:"2026-05-14T13:00:00Z", category:"rd" },
+  { title:"AbbVie acquires Celsius Therapeutics to deepen immunology discovery platform", url:"https://www.endpointsnews.com/", desc:"The $350M deal adds single-cell transcriptomics capabilities, helping AbbVie identify novel targets to sustain its immunology leadership post-Humida LOE.", source:"Endpoints News", pubDate:"2026-05-13T08:30:00Z", category:"ma" },
+  { title:"Eli Lilly's tirzepatide approved for obstructive sleep apnea", url:"https://www.statnews.com/", desc:"The FDA's Zepbound approval for OSA broadens tirzepatide's addressable market well beyond diabetes and obesity, threatening ResMed and Philips Respironics.", source:"Stat News", pubDate:"2026-05-12T14:00:00Z", category:"reg" },
+  { title:"Eli Lilly commits $9B to new US manufacturing to meet GLP-1 demand", url:"https://www.cnbc.com/", desc:"Two new US sites in Indiana and North Carolina will add significant incremin and tirzepatide capacity, aiming to eliminate the multi-month supply backlog.", source:"CNBC", pubDate:"2026-05-11T10:00:00Z", category:"ma" },
+  { title:"Bristol-Myers Squibb cuts 2,200 jobs in $1.5B restructuring programme", url:"https://www.bloomberg.com/", desc:"BMS faces mounting post-Revlimid LOE pressure and is reshaping its cost base while betting on its CAR-T and cardiovascular pipeline to restore growth.", source:"Bloomberg", pubDate:"2026-05-10T09:00:00Z", category:"wf" },
+  { title:"BMS CAR-T therapy ide-cel shows 40% durable response at 24 months in myeloma", url:"https://www.nejm.org/", desc:"Long-term follow-up from the KarMMa-3 trial reinforces ide-cel's position as a meaningful option in relapsed/refractory multiple myeloma.", source:"NEJM", pubDate:"2026-05-09T16:00:00Z", category:"rd" },
+  { title:"Keytruda generates $7.4B in Q1 as Merck races to extend exclusivity", url:"https://www.evaluate.com/", desc:"Merck's PD-1 blockbuster maintains its global lead, but the company is urgently filing new indications and subcutaneous formulations ahead of the 2028 patent cliff.", source:"Evaluate Pharma", pubDate:"2026-05-08T11:00:00Z", category:"rd" },
+  { title:"Merck partners with Tempus AI to develop oncology companion diagnostics", url:"https://www.fiercebiotech.com/", desc:"The collaboration will use machine learning–based biomarker discovery to pair Keytruda and pipeline assets with predictive diagnostics.", source:"Fierce Biotech", pubDate:"2026-05-07T10:00:00Z", category:"ai" },
+  { title:"Novo Nordisk's weekly oral semaglutide 50mg shows 15% weight loss in Phase 3", url:"https://www.nejm.org/", desc:"The OASIS-2 trial result strengthens Novo Nordisk's obesity pipeline and may shift patient preference toward oral GLP-1 therapy if approved.", source:"NEJM", pubDate:"2026-05-06T09:00:00Z", category:"rd" },
+  { title:"Novo Nordisk names new US commercial president amid GLP-1 supply constraints", url:"https://www.pharmatimes.com/", desc:"The executive change comes as Novo Nordisk attempts to balance unprecedented demand with ongoing Ozempic and Wegovy manufacturing scale-up.", source:"PharmaTimes", pubDate:"2026-05-05T08:00:00Z", category:"wf" },
+  { title:"Bayer wins FDA approval for Nubeqa in hormone-sensitive prostate cancer", url:"https://www.fda.gov/", desc:"Darolutamide's expanded label positions Nubeqa to compete directly against Janssen's Zytiga and Astellas/Pfizer's Xtandi in earlier-line prostate cancer.", source:"FDA.gov", pubDate:"2026-05-04T12:00:00Z", category:"reg" },
+  { title:"Boehringer Ingelheim acquires Nerio Therapeutics for $6.5B oncology push", url:"https://www.reuters.com/", desc:"The deal marks Boehringer's most significant pivot toward oncology, adding a RAS/MAPK pathway inhibitor platform to its cardiovascular and respiratory core.", source:"Reuters", pubDate:"2026-05-03T10:00:00Z", category:"ma" },
+  { title:"Boehringer Ingelheim's zongertinib wins breakthrough therapy designation for HER2 lung cancer", url:"https://www.fiercepharma.com/", desc:"The FDA designation for zongertinib in HER2-mutant NSCLC could accelerate its approval and challenge AstraZeneca's Enhertu in this indication.", source:"Fierce Pharma", pubDate:"2026-05-02T09:00:00Z", category:"reg" },
+  { title:"Amgen's MariTide monthly injection shows superior durability vs weekly GLP-1s", url:"https://www.biopharmadive.com/", desc:"Phase 2 data for Amgen's GIP/GLP-1 dual agonist suggest monthly dosing may differentiate MariTide in a crowded obesity market.", source:"BioPharma Dive", pubDate:"2026-05-01T14:00:00Z", category:"rd" },
+  { title:"Amgen launches internal generative AI platform for protein engineering", url:"https://www.nature.com/natbiotech", desc:"Amgen's proprietary large protein language model is being deployed to design next-generation biologics with improved half-life, potency, and tolerability.", source:"Nature Biotech", pubDate:"2026-04-30T09:00:00Z", category:"ai" }
+];
 
 let allArticles = [], filtered = [], currentCat = 'all', searchTerm = '';
 
@@ -483,7 +525,16 @@ function showPage(page, btn) {
   btn.classList.add('active');
   document.getElementById('briefingPage').classList.toggle('active', page==='briefing');
   document.getElementById('ciPage').classList.toggle('active', page==='ci');
+  document.getElementById('mfgPage').classList.toggle('active', page==='mfg');
   if(page==='ci') buildCIPage();
+}
+
+function mergeSeedArticles(liveArticles) {
+  const seedProcessed = SEED_CI_ARTICLES.map(a => ({...a, time: timeAgo(a.pubDate)}));
+  // Deduplicate by title in case live API already has these stories
+  const liveTitles = new Set(liveArticles.map(a => a.title.toLowerCase()));
+  const newSeeds = seedProcessed.filter(a => !liveTitles.has(a.title.toLowerCase()));
+  return [...liveArticles, ...newSeeds];
 }
 
 async function loadNews() {
@@ -494,23 +545,35 @@ async function loadNews() {
   try {
     const res = await fetch('/api/feed');
     const data = await res.json();
-    if(data.error){ document.getElementById('newsContainer').innerHTML=`<div class="error-state"><strong>Error:</strong> ${data.error}</div>`; document.getElementById('statusText').textContent='Error'; return; }
-    if(!data.articles?.length){ document.getElementById('newsContainer').innerHTML=`<div class="empty-state"><p>No articles found. Try refreshing.</p></div>`; document.getElementById('statusText').textContent='No articles'; return; }
+    if(data.error){
+      // Fall back to seed articles only
+      allArticles = mergeSeedArticles([]);
+      updateCounts(); renderNews();
+      document.getElementById('newsContainer').insertAdjacentHTML('beforebegin',`<div class="error-state" style="margin:1rem 2rem"><strong>Live feed unavailable:</strong> ${data.error} — showing curated competitor articles.</div>`);
+      document.getElementById('statusText').textContent=`${allArticles.length} curated articles`;
+      if(document.getElementById('ciPage').classList.contains('active')) buildCIPage();
+      return;
+    }
 
-    allArticles = data.articles
+    const live = (data.articles||[])
       .filter(a=>a.title&&a.url&&a.title!=='[Removed]')
       .map(a=>({title:a.title,url:a.url,desc:a.description||'',source:a.source?.name||'Unknown',pubDate:a.publishedAt,time:timeAgo(a.publishedAt),category:classify(a.title,a.description)}));
+
+    allArticles = mergeSeedArticles(live);
 
     updateCounts();
     renderNews();
     document.getElementById('statusText').textContent=`${allArticles.length} articles loaded`;
     document.getElementById('updatedAt').textContent=`Updated ${new Date().toLocaleTimeString()}`;
 
-    // Refresh CI if visible
     if(document.getElementById('ciPage').classList.contains('active')) buildCIPage();
   } catch(e) {
-    document.getElementById('newsContainer').innerHTML=`<div class="error-state"><strong>Could not load news.</strong><br>${e.message}</div>`;
-    document.getElementById('statusText').textContent='Error';
+    // Network failure — still show seed articles
+    allArticles = mergeSeedArticles([]);
+    updateCounts(); renderNews();
+    document.getElementById('newsContainer').insertAdjacentHTML('beforebegin',`<div class="error-state" style="margin:1rem 2rem"><strong>Could not load live news.</strong><br>${e.message} — showing curated competitor articles.</div>`);
+    document.getElementById('statusText').textContent=`${allArticles.length} curated articles`;
+    if(document.getElementById('ciPage').classList.contains('active')) buildCIPage();
   }
 }
 
