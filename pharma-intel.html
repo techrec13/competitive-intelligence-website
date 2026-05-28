@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pharma Talent Intel — Daily Briefing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #5a5a5a;
+    --text-muted: #9a9a9a;
+    --border: #e8e4dc;
+    --accent: #1e3a5f;
+    --accent-light: #e8eef5;
+    --tag-ma: #fff3e0; --tag-ma-text: #7c4e00;
+    --tag-workforce: #e8f5e9; --tag-workforce-text: #1b5e20;
+    --tag-rd: #e3f2fd; --tag-rd-text: #0d3b6e;
+    --tag-ai: #f3e5f5; --tag-ai-text: #4a148c;
+    --tag-regulatory: #fce4ec; --tag-regulatory-text: #880e4f;
+    --tag-competitor: #e0f7fa; --tag-competitor-text: #004d52;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--accent);
+    color: white;
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 30%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 0.6rem;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+  }
+
+  .header-sub {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+  }
+
+  .header-meta {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .date-badge {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .refresh-btn {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 16px;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.03em;
+  }
+
+  .refresh-btn:hover { background: rgba(255,255,255,0.2); }
+
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 1rem 1.1rem;
+    color: var(--text-muted);
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.15s;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-tab:hover { color: var(--text-primary); }
+
+  .nav-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  .nav-tab .count {
+    font-size: 11px;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-weight: 500;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .loading-state, .error-state, .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-muted);
+  }
+
+  .spinner {
+    width: 32px; height: 32px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 1rem;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1rem;
+  }
+
+  .article-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .article-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transform: translateY(-1px);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .category-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+
+  .tag-ma         { background: var(--tag-ma);         color: var(--tag-ma-text); }
+  .tag-workforce  { background: var(--tag-workforce);  color: var(--tag-workforce-text); }
+  .tag-rd         { background: var(--tag-rd);         color: var(--tag-rd-text); }
+  .tag-ai         { background: var(--tag-ai);         color: var(--tag-ai-text); }
+  .tag-regulatory { background: var(--tag-regulatory); color: var(--tag-regulatory-text); }
+  .tag-competitor { background: var(--tag-competitor); color: var(--tag-competitor-text); }
+  .tag-general    { background: #f0ede8;               color: #555; }
+
+  .card-time {
+    font-size: 11px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--text-primary);
+  }
+
+  .card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .card-title a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-color: rgba(30,58,95,0.3);
+  }
+
+  .card-summary {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .source-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .source-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.4;
+  }
+
+  .read-link {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    opacity: 0.85;
+    transition: opacity 0.15s;
+  }
+
+  .read-link:hover { opacity: 1; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .section-divider {
+    height: 1px;
+    background: var(--border);
+    flex: 1;
+  }
+
+  .section-count {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .category-section {
+    margin-bottom: 2.5rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-tag">Talent Intelligence · Pharma & Biotech</div>
+    <h1>Pharma Talent Intel</h1>
+    <div class="header-sub">Yesterday's industry news — workforce lens</div>
+    <div class="header-meta">
+      <span class="date-badge" id="dateDisplay">—</span>
+      <button class="refresh-btn" onclick="loadNews()">↻ Refresh</button>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-tab active" data-cat="all" onclick="filterCat('all', this)">
+      All <span class="count" id="count-all">0</span>
+    </button>
+    <button class="nav-tab" data-cat="workforce" onclick="filterCat('workforce', this)">
+      Workforce &amp; Talent <span class="count" id="count-workforce">0</span>
+    </button>
+    <button class="nav-tab" data-cat="ma" onclick="filterCat('ma', this)">
+      M&amp;A &amp; Restructuring <span class="count" id="count-ma">0</span>
+    </button>
+    <button class="nav-tab" data-cat="rd" onclick="filterCat('rd', this)">
+      R&amp;D Pipeline <span class="count" id="count-rd">0</span>
+    </button>
+    <button class="nav-tab" data-cat="ai" onclick="filterCat('ai', this)">
+      AI in Pharma <span class="count" id="count-ai">0</span>
+    </button>
+    <button class="nav-tab" data-cat="regulatory" onclick="filterCat('regulatory', this)">
+      Regulatory <span class="count" id="count-regulatory">0</span>
+    </button>
+    <button class="nav-tab" data-cat="competitor" onclick="filterCat('competitor', this)">
+      Competitor Intel <span class="count" id="count-competitor">0</span>
+    </button>
+  </div>
+</nav>
+
+<main>
+  <div class="status-bar">
+    <span id="statusText">Loading news…</span>
+    <span id="sourceCount"></span>
+  </div>
+  <div id="newsContainer">
+    <div class="loading-state">
+      <div class="spinner"></div>
+      <p>Fetching pharma news…</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  Pharma Talent Intel · Sources: FiercePharma, BioPharma Dive, STAT News, Endpoints News, PharmaVoice, Reuters Health · Built for Takeda TA &amp; CI teams
+</footer>
+
+<script>
+const CORS_PROXY = 'https://api.allorigins.win/get?url=';
+
+const SOURCES = [
+  { name: 'FiercePharma',   url: 'https://www.fiercepharma.com/rss/xml' },
+  { name: 'BioPharma Dive', url: 'https://www.biopharmadive.com/feeds/news/' },
+  { name: 'STAT News',      url: 'https://www.statnews.com/feed/' },
+  { name: 'Endpoints News', url: 'https://endpts.com/feed/' },
+  { name: 'PharmaVoice',    url: 'https://www.pharmavoice.com/feed/' },
+  { name: 'Reuters Health', url: 'https://feeds.reuters.com/reuters/healthNews' }
+];
+
+const CATEGORIES = {
+  workforce: {
+    label: 'Workforce & Talent',
+    tagClass: 'tag-workforce',
+    keywords: ['layoff','layoffs','redundan','headcount','hiring','talent','workforce','employees','staff','jobs','job cuts','restructur','reorgani','chief','ceo','cfo','coo','president','appoint','named','joins','departure','resign','executive','leadership','people','hr ','human resources','workforce planning','talent acquisition','recrui']
+  },
+  ma: {
+    label: 'M&A & Restructuring',
+    tagClass: 'tag-ma',
+    keywords: ['acqui','merger','deal','divest','spin-off','spinoff','buyout','takeover','bid','transaction','closes','closing','completed','purchase','m&a','restructur','reorgani','site closure','plant closure','consolidat']
+  },
+  rd: {
+    label: 'R&D Pipeline',
+    tagClass: 'tag-rd',
+    keywords: ['trial','phase 1','phase 2','phase 3','pipeline','drug','therapy','treatment','clinical','fda approv','ema approv','approval','indication','compound','molecule','biologic','candidate','study','data','results','efficacy','safety','endpoint']
+  },
+  ai: {
+    label: 'AI in Pharma',
+    tagClass: 'tag-ai',
+    keywords: ['artificial intelligence',' ai ','machine learning','deep learning','generative ai','chatgpt','llm','automation','algorithm','digital health','digital transform','technology','tech','software','platform','data science','predictive']
+  },
+  regulatory: {
+    label: 'Regulatory',
+    tagClass: 'tag-regulatory',
+    keywords: ['fda','ema','regulatory','regulation','approval','approved','reject','warning letter','compliance','inspection','audit','gmp','clinical hold','label','labeling','patent','intellectual property','exclusivity']
+  },
+  competitor: {
+    label: 'Competitor Intel',
+    tagClass: 'tag-competitor',
+    keywords: ['pfizer','novartis','roche','astrazeneca','johnson & johnson','j&j','bristol-myers','bms','sanofi','gsk','abbvie','amgen','biogen','gilead','eli lilly','lilly','boehringer','bayer','merck','novo nordisk','astellas','eisai','daiichi','otsuka']
+  }
+};
+
+let allArticles = [];
+let currentCat = 'all';
+
+function classifyArticle(title, description) {
+  const text = (title + ' ' + (description || '')).toLowerCase();
+  const scores = {};
+  for (const [cat, data] of Object.entries(CATEGORIES)) {
+    scores[cat] = data.keywords.filter(kw => text.includes(kw)).length;
+  }
+  const best = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
+  return best && best[1] > 0 ? best[0] : 'general';
+}
+
+function timeAgo(dateStr) {
+  const d = new Date(dateStr);
+  if (isNaN(d)) return '';
+  const diff = (Date.now() - d) / 1000;
+  if (diff < 3600) return Math.round(diff/60) + 'h ago';
+  if (diff < 86400) return Math.round(diff/3600) + 'h ago';
+  return Math.round(diff/86400) + 'd ago';
+}
+
+function stripHtml(html) {
+  if (!html) return '';
+  return html.replace(/<[^>]+>/g, '').replace(/&[a-z]+;/g, ' ').trim();
+}
+
+async function fetchFeed(source) {
+  try {
+    const res = await fetch(CORS_PROXY + encodeURIComponent(source.url), { signal: AbortSignal.timeout(10000) });
+    const data = await res.json();
+    const xml = new DOMParser().parseFromString(data.contents, 'text/xml');
+    const items = xml.querySelectorAll('item');
+    const articles = [];
+    const cutoff = Date.now() - 48 * 60 * 60 * 1000;
+    items.forEach(item => {
+      const title = item.querySelector('title')?.textContent?.trim() || '';
+      const link  = item.querySelector('link')?.textContent?.trim() || '';
+      const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
+      const desc  = stripHtml(item.querySelector('description')?.textContent || '');
+      const d = new Date(pubDate);
+      if (!title || !link) return;
+      if (!isNaN(d) && d.getTime() < cutoff) return;
+      articles.push({
+        title, link, pubDate, desc,
+        source: source.name,
+        category: classifyArticle(title, desc),
+        time: timeAgo(pubDate)
+      });
+    });
+    return articles;
+  } catch(e) {
+    console.warn('Feed failed:', source.name, e.message);
+    return [];
+  }
+}
+
+function renderCard(a) {
+  const cat = CATEGORIES[a.category] || { label: 'General', tagClass: 'tag-general' };
+  return `
+    <div class="article-card" data-cat="${a.category}">
+      <div class="card-top">
+        <span class="category-tag ${cat.tagClass}">${cat.label}</span>
+        <span class="card-time">${a.time}</span>
+      </div>
+      <div class="card-title"><a href="${a.link}" target="_blank" rel="noopener">${a.title}</a></div>
+      ${a.desc ? `<div class="card-summary">${a.desc.substring(0,200)}${a.desc.length>200?'…':''}</div>` : ''}
+      <div class="card-footer">
+        <span class="source-name"><span class="source-dot"></span>${a.source}</span>
+        <a class="read-link" href="${a.link}" target="_blank" rel="noopener">Read →</a>
+      </div>
+    </div>`;
+}
+
+function updateCounts(articles) {
+  const counts = { all: articles.length };
+  for (const cat of Object.keys(CATEGORIES)) {
+    counts[cat] = articles.filter(a => a.category === cat).length;
+  }
+  for (const [cat, n] of Object.entries(counts)) {
+    const el = document.getElementById('count-' + cat);
+    if (el) el.textContent = n;
+  }
+}
+
+function renderAll(articles, cat) {
+  const container = document.getElementById('newsContainer');
+  const filtered = cat === 'all' ? articles : articles.filter(a => a.category === cat);
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="empty-state"><p>No articles found for this category.</p></div>`;
+    return;
+  }
+
+  if (cat !== 'all') {
+    container.innerHTML = `<div class="articles-grid">${filtered.map(renderCard).join('')}</div>`;
+    return;
+  }
+
+  const grouped = {};
+  for (const a of articles) {
+    if (!grouped[a.category]) grouped[a.category] = [];
+    grouped[a.category].push(a);
+  }
+
+  let html = '';
+  for (const [catKey, catData] of Object.entries(CATEGORIES)) {
+    const items = grouped[catKey] || [];
+    if (!items.length) continue;
+    html += `
+      <div class="category-section">
+        <div class="section-header">
+          <h2>${catData.label}</h2>
+          <div class="section-divider"></div>
+          <span class="section-count">${items.length} article${items.length>1?'s':''}</span>
+        </div>
+        <div class="articles-grid">${items.map(renderCard).join('')}</div>
+      </div>`;
+  }
+  if (grouped['general']?.length) {
+    html += `
+      <div class="category-section">
+        <div class="section-header">
+          <h2>Other</h2>
+          <div class="section-divider"></div>
+          <span class="section-count">${grouped['general'].length} articles</span>
+        </div>
+        <div class="articles-grid">${grouped['general'].map(renderCard).join('')}</div>
+      </div>`;
+  }
+  container.innerHTML = html || `<div class="empty-state"><p>No recent articles found.</p></div>`;
+}
+
+function filterCat(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderAll(allArticles, cat);
+}
+
+async function loadNews() {
+  document.getElementById('newsContainer').innerHTML = `<div class="loading-state"><div class="spinner"></div><p>Fetching pharma news from ${SOURCES.length} sources…</p></div>`;
+  document.getElementById('statusText').textContent = 'Fetching…';
+
+  const now = new Date();
+  document.getElementById('dateDisplay').textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+  const results = await Promise.allSettled(SOURCES.map(fetchFeed));
+  const articles = results.flatMap(r => r.status === 'fulfilled' ? r.value : []);
+  articles.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
+  allArticles = articles;
+  const successCount = results.filter(r => r.status === 'fulfilled' && r.value.length > 0).length;
+
+  updateCounts(articles);
+  renderAll(articles, currentCat);
+
+  document.getElementById('statusText').textContent = `${articles.length} articles loaded`;
+  document.getElementById('sourceCount').textContent = `${successCount} of ${SOURCES.length} sources live`;
+}
+
+loadNews();
+</script>
+</body>
+</html>
