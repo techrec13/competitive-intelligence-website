@@ -71,7 +71,9 @@ main{max-width:1200px;margin:0 auto;padding:1.4rem 2rem}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ARTICLE CARDS */
-.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.85rem}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem}
+@media(max-width:900px){.articles-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.articles-grid{grid-template-columns:1fr}}
 .article-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--border2);border-radius:10px;padding:1.1rem 1.1rem 1.1rem .95rem;transition:box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:.5rem}
 .article-card:hover{box-shadow:0 3px 16px rgba(0,0,0,.07);border-color:var(--border2)}
 /* category left-border accent */
