@@ -99,12 +99,17 @@ main{max-width:1200px;margin:0 auto;padding:1.4rem 2rem}
 .nc-read{font-size:11.5px;font-weight:600;color:var(--red);text-decoration:none}
 .nc-read:hover{opacity:.7}
 
-/* STATUS BAR */
-.status-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.1rem;font-size:11.5px;color:var(--tm)}
-.status-right{display:flex;align-items:center;gap:.6rem}
-.arc-info{font-size:11px;color:var(--tm)}
-.arc-clear-btn{font-family:'Inter',sans-serif;font-size:11px;color:var(--tm);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:2px;display:none}
+/* VIEW TOGGLE */
+.view-toggle-wrap{background:white;border-bottom:1px solid var(--border)}
+.view-toggle{max-width:1200px;margin:0 auto;padding:.55rem 2rem;display:flex;align-items:center;gap:6px}
+.vtab{font-family:'Inter',sans-serif;font-size:12px;font-weight:500;padding:.38rem .9rem;border:1px solid var(--border2);background:white;border-radius:6px;cursor:pointer;color:var(--tm);transition:all .15s;display:flex;align-items:center;gap:5px}
+.vtab.active{background:var(--dark);color:white;border-color:var(--dark)}
+.vtab:hover:not(.active){color:var(--tp);background:var(--bg)}
+.vcnt{font-size:10px;font-weight:700;padding:1px 6px;border-radius:8px;background:var(--red-pale);color:var(--red)}
+.vtab.active .vcnt{background:rgba(255,255,255,.18);color:white}
+.arc-clear-btn{margin-left:auto;font-family:'Inter',sans-serif;font-size:11px;color:var(--tm);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:2px;display:none}
 .arc-clear-btn:hover{color:var(--red)}
+
 
 /* PAGE VISIBILITY */
 .page{display:none}
@@ -260,8 +265,15 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:11px;color:var(--tm);bord
       <button class="cat-tab" data-cat="ci" onclick="filterCat('ci',this)">Competitor Intel <span class="cnt" id="c-ci">0</span></button>
     </div>
   </div>
+  <div class="view-toggle-wrap">
+    <div class="view-toggle">
+      <button class="vtab active" onclick="switchView('live',this)">Live Feed</button>
+      <button class="vtab" onclick="switchView('archive',this)">Archive <span class="vcnt" id="arcCount"></span></button>
+      <button class="arc-clear-btn" id="archiveClearBtn" onclick="arcClear()">Clear archive</button>
+    </div>
+  </div>
   <main>
-    <div class="status-bar"><span id="statusText">Loading…</span><div class="status-right"><span class="arc-info" id="archiveInfo"></span><button class="arc-clear-btn" id="archiveClearBtn" onclick="arcClear()">Clear archive</button><span id="updatedAt"></span></div></div>
+    <div class="status-bar"><span id="statusText">Loading…</span><span id="updatedAt"></span></div>
     <div id="newsContainer"><div class="loading-state"><div class="spinner"></div><p>Fetching pharma news…</p></div></div>
   </main>
 </div>
@@ -760,15 +772,18 @@ footer{text-align:center;padding:1.5rem 2rem;font-size:11px;color:var(--tm);bord
 
 <script>
 const CATS = {
-  wf:  { label:'Workforce & Talent',  tag:'tag-wf',  keys:['layoff','layoffs','redundan','headcount','hiring','talent','workforce','employees','staff','job cuts','reorgani','ceo','cfo','appoint','named','joins','departure','resign','executive','leadership','talent acquisition','recrui','downsiz'] },
-  ma:  { label:'M&A & Restructuring', tag:'tag-ma',  keys:['acqui','merger','deal','divest','spin-off','spinoff','buyout','takeover','bid','transaction','purchase','consolidat','site closure','plant closure'] },
-  rd:  { label:'R&D Pipeline',        tag:'tag-rd',  keys:['phase 1','phase 2','phase 3','phase i','phase ii','phase iii','clinical trial','pipeline','drug candidate','therapy','treatment','biologic','indication','compound','molecule','efficacy','endpoint','data readout'] },
-  ai:  { label:'AI in Pharma',        tag:'tag-ai',  keys:['artificial intelligence','machine learning','deep learning','generative ai','large language','llm','automation','algorithm','digital health','digital transform','data science','predictive'] },
-  reg: { label:'Regulatory',          tag:'tag-reg', keys:['fda','ema','regulatory','approved','approval','reject','warning letter','compliance','gmp','clinical hold','patent','exclusivity','label change'] },
-  ci:  { label:'Competitor Intel',    tag:'tag-ci',  keys:['pfizer','novartis','roche','astrazeneca','johnson & johnson','bristol-myers','bms','sanofi','gsk','abbvie','amgen','gilead','eli lilly','boehringer','bayer','merck','novo nordisk','astellas','eisai','daiichi','otsuka','argenx','jazz pharma','immunovant','spyre'] }
+  reg: { label:'Regulatory',          tag:'tag-reg', keys:['fda ','u.s. fda','ema ','european medicines','regulatory approval','approved by fda','approval granted','rejected by','complete response letter','crl','warning letter','consent decree','gmp violation','clinical hold','import alert','patent expir','patent cliff','data exclusivity','label update','prescribing information','boxed warning','pdufa','advisory committee','adcom','breakthrough therapy','fast track','priority review','accelerated approval','orphan drug','rare disease designation','biosimilar','generic approval','new drug application','biologics license','510(k)'] },
+  ma:  { label:'M&A & Restructuring', tag:'tag-ma',  keys:['acqui','merger','acquires','acquired','divest','spin-off','spinoff','buyout','takeover','tender offer','transaction','consolidat','site closure','plant closure','strategic partnership','licensing deal','out-license','in-license','asset purchase','portfolio acquisition','billion deal','million deal','strategic review','carve-out','divestiture','sold to','joint venture','collaboration agreement','signed deal','cost saving','cost cut'] },
+  rd:  { label:'R&D Pipeline',        tag:'tag-rd',  keys:['phase 1','phase 2','phase 3','phase i ','phase ii ','phase iii ','clinical trial','clinical study','pivotal trial','registrational','pipeline','drug candidate','biologic','compound','molecule','primary endpoint','secondary endpoint','data readout','trial results','nda','bla','ind filing','mechanism of action','preclinical','response rate','remission rate','progression-free','overall survival','dose escalation','randomized','placebo-controlled','open-label','investigational','first-in-class','best-in-class','platform technology','efficacy data'] },
+  ai:  { label:'AI in Pharma',        tag:'tag-ai',  keys:['artificial intelligence','machine learning','deep learning','generative ai','large language model','llm','neural network','natural language processing','ai drug discovery','ai diagnostics','ai-powered','ai-driven','ai platform','computational drug','alphafold','protein structure','virtual screening','in silico','digital biomarker','precision medicine','genomics','multiomics','data science','predictive model','algorithm','digital health','digital transform'] },
+  wf:  { label:'Workforce & Talent',  tag:'tag-wf',  keys:['layoff','layoffs','redundan','headcount reduction','workforce reduction','job cut','job loss','positions eliminated','roles eliminated','downsiz','severance','furlough','reduction in force','restructuring plan','ceo appoint','cfo appoint','coo appoint','chief executive','chief financial','named ceo','named president','new ceo','joins as','steps down','departure','resigns','executive hire','talent acquisition','recrui','people strategy'] },
+  ci:  { label:'Competitor Intel',    tag:'tag-ci',  keys:['pfizer','novartis','roche','hoffmann-la roche','genentech','astrazeneca','johnson & johnson','j&j','janssen','bristol-myers','bms','sanofi','glaxosmithkline','gsk','abbvie','amgen','gilead sciences','eli lilly','boehringer ingelheim','bayer','merck kgaa','msd','novo nordisk','astellas','eisai','daiichi sankyo','otsuka','chugai','argenx','jazz pharmaceuticals','immunovant','spyre therapeutics','regeneron','biogen','vertex pharmaceuticals','alexion','alnylam','bluebird','crispr therapeutics','moderna','biontech','seagen','incyte','blueprint medicines'] }
 };
 
-let allArticles = [], currentCat = 'all', searchTerm = '';
+/* Category priority when scores tie (most specific first) */
+const CAT_PRIORITY = ['reg','ma','rd','ai','wf','ci'];
+
+let allArticles = [], currentCat = 'all', searchTerm = '', currentView = 'live';
 
 const ARC_KEY = 'pharma_intel_archive';
 const ARC_MAX = 500;
@@ -788,28 +803,27 @@ function arcLoad() {
 function arcClear() {
   localStorage.removeItem(ARC_KEY);
   allArticles = allArticles.filter(a=>!a.archived);
-  updateArchiveUI(0);
+  updateArcCount();
+  if(currentView==='archive') { currentView='live'; document.querySelectorAll('.vtab')[0].classList.add('active'); document.querySelectorAll('.vtab')[1].classList.remove('active'); document.getElementById('archiveClearBtn').style.display='none'; }
   updateCounts(); renderNews();
 }
 
-function updateArchiveUI(count) {
-  const info = document.getElementById('archiveInfo');
-  const btn = document.getElementById('archiveClearBtn');
-  if (count > 0) {
-    info.textContent = `${count} archived`;
-    btn.style.display = 'inline';
-  } else {
-    info.textContent = '';
-    btn.style.display = 'none';
-  }
+function updateArcCount() {
+  const count = allArticles.filter(a=>a.archived).length;
+  const el = document.getElementById('arcCount');
+  if(el) el.textContent = count > 0 ? count : '';
+  const clearBtn = document.getElementById('archiveClearBtn');
+  if(clearBtn) clearBtn.style.display = (currentView==='archive' && count>0) ? 'inline' : 'none';
 }
 
 function classify(title, desc) {
   const t = (title+' '+(desc||'')).toLowerCase();
   const scores = {};
   for (const [k,v] of Object.entries(CATS)) scores[k] = v.keys.filter(kw=>t.includes(kw)).length;
-  const best = Object.entries(scores).sort((a,b)=>b[1]-a[1])[0];
-  return best && best[1]>0 ? best[0] : 'gen';
+  const maxScore = Math.max(0, ...Object.values(scores));
+  if(!maxScore) return 'gen';
+  const tied = CAT_PRIORITY.filter(k => scores[k] === maxScore);
+  return tied[0] || 'gen';
 }
 
 function timeAgo(s) {
@@ -822,10 +836,9 @@ function timeAgo(s) {
 
 function renderCard(a) {
   const cat = CATS[a.category] || {label:'General',tag:'tag-gen'};
-  const ncClass = a.archived ? ' nc-archived' : (a.category && a.category !== 'gen' ? ` nc-${a.category}` : '');
-  const arcBadge = a.archived ? `<span class="nc-arc">archive</span>` : '';
+  const ncClass = a.category && a.category !== 'gen' ? ` nc-${a.category}` : '';
   return `<article class="news-card${ncClass}">
-    <div class="nc-meta"><span class="nc-cat ${cat.tag}">${cat.label}</span>${arcBadge}<span class="nc-time">${a.time}</span></div>
+    <div class="nc-meta"><span class="nc-cat ${cat.tag}">${cat.label}</span><span class="nc-time">${a.time}</span></div>
     <div class="nc-title"><a href="${a.url}" target="_blank" rel="noopener">${a.title}</a></div>
     ${a.desc ? `<p class="nc-desc">${a.desc.substring(0,160)}${a.desc.length>160?'…':''}</p>` : ''}
     <div class="nc-footer"><span class="nc-src">${a.source}</span><a class="nc-read" href="${a.url}" target="_blank" rel="noopener">Read →</a></div>
@@ -833,14 +846,15 @@ function renderCard(a) {
 }
 
 function getFiltered() {
-  let arr = allArticles;
+  let arr = allArticles.filter(a => currentView === 'archive' ? a.archived : !a.archived);
   if(currentCat !== 'all') arr = arr.filter(a=>a.category===currentCat);
   if(searchTerm) { const s=searchTerm.toLowerCase(); arr=arr.filter(a=>(a.title+' '+(a.desc||'')).toLowerCase().includes(s)); }
   return arr;
 }
 
 function updateCounts() {
-  const base = searchTerm ? allArticles.filter(a=>(a.title+' '+(a.desc||'')).toLowerCase().includes(searchTerm.toLowerCase())) : allArticles;
+  const viewBase = allArticles.filter(a => currentView === 'archive' ? a.archived : !a.archived);
+  const base = searchTerm ? viewBase.filter(a=>(a.title+' '+(a.desc||'')).toLowerCase().includes(searchTerm.toLowerCase())) : viewBase;
   document.getElementById('c-all').textContent = base.length;
   for(const cat of Object.keys(CATS)) { const el=document.getElementById('c-'+cat); if(el) el.textContent=base.filter(a=>a.category===cat).length; }
 }
@@ -849,8 +863,21 @@ function renderNews() {
   const container = document.getElementById('newsContainer');
   const filtered = getFiltered();
   document.getElementById('resultCount').textContent = searchTerm ? `${filtered.length} result${filtered.length!==1?'s':''} for "${searchTerm}"` : '';
-  if(!filtered.length) { container.innerHTML=`<div class="empty-state"><p>${searchTerm?'No articles match your search.':'No articles found.'}</p></div>`; return; }
+  if(!filtered.length) {
+    const msg = currentView==='archive'
+      ? (searchTerm ? 'No archived articles match your search.' : 'Archive is empty — articles accumulate here after each refresh.')
+      : (searchTerm ? 'No articles match your search.' : 'No articles found.');
+    container.innerHTML=`<div class="empty-state"><p>${msg}</p></div>`; return;
+  }
   container.innerHTML = `<div class="feed">${filtered.map(renderCard).join('')}</div>`;
+}
+
+function switchView(view, btn) {
+  currentView = view;
+  document.querySelectorAll('.vtab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  updateArcCount();
+  updateCounts(); renderNews();
 }
 
 function filterCat(cat, btn) {
@@ -894,7 +921,6 @@ async function loadNews() {
   document.getElementById('statusText').textContent='Fetching…';
   document.getElementById('dateDisplay').textContent=new Date().toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   const cached = arcLoad();
-  if(cached.length) updateArchiveUI(cached.length);
   try {
     const res=await fetch('/api/feed');
     const data=await res.json();
@@ -902,8 +928,7 @@ async function loadNews() {
       document.getElementById('statusText').textContent='Feed unavailable';
       if(cached.length) {
         allArticles = cached;
-        updateCounts(); renderNews();
-        document.getElementById('newsContainer').querySelector('.loading-state')?.remove();
+        updateArcCount(); updateCounts(); renderNews();
       } else {
         document.getElementById('newsContainer').innerHTML=`<div class="empty-state"><p>Live feed unavailable: ${data.error}</p></div>`;
       }
@@ -916,14 +941,13 @@ async function loadNews() {
     const liveUrls = new Set(liveArticles.map(a=>a.url));
     const olderArchived = arcLoad().filter(a=>!liveUrls.has(a.url));
     allArticles = [...liveArticles, ...olderArchived];
-    updateArchiveUI(arcLoad().length);
-    updateCounts(); renderNews();
-    document.getElementById('statusText').textContent=`${liveArticles.length} live · ${olderArchived.length} archived`;
+    updateArcCount(); updateCounts(); renderNews();
+    document.getElementById('statusText').textContent=`${liveArticles.length} articles`;
     document.getElementById('updatedAt').textContent=`Updated ${new Date().toLocaleTimeString()}`;
   } catch(e) {
     document.getElementById('newsContainer').innerHTML=`<div class="error-state"><strong>Could not load news.</strong> ${e.message}</div>`;
     document.getElementById('statusText').textContent='Error';
-    if(cached.length) { allArticles=cached; updateCounts(); renderNews(); }
+    if(cached.length) { allArticles=cached; updateArcCount(); updateCounts(); renderNews(); }
   }
 }
 
